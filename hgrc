@@ -15,8 +15,7 @@ hgk =
 purge =
 record =
 transplant =
-nelchaelhgext.shortlog =
-hginout.hginout =
+nelchaelhgext = 
 
 [ui]
 email = nelchael@local
