@@ -99,7 +99,6 @@ esac
 
 # Enable bash completion:
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
-[[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
 # Check ~/bin/bash_completion.d for additional bash-completion scripts:
 [[ -d ~/bin/bash_completion.d ]] && {

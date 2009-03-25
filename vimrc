@@ -83,6 +83,7 @@ au BufRead */package.mask setlocal textwidth=75 fileencoding=utf-8 encoding=utf-
 au BufRead */ChangeLog setlocal textwidth=75 fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
 au BufRead *.pdf setlocal fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
 au BufRead *.sql setlocal fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
+au BufRead */hgrc setlocal filetype=dosini
 au FileType tex,plaintex setlocal textwidth=100
 au BufReadCmd *.jar,*.war,*.ear call zip#Browse(expand("<amatch>"))
 au BufReadPre *.pdf set ro

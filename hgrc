@@ -15,6 +15,7 @@ hgk =
 purge =
 record =
 transplant =
+convert =
 nelchaelhgext = 
 
 [ui]
