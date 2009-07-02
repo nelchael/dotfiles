@@ -78,9 +78,10 @@ map <F3> :bp<CR>
 
 map <C-j> <ESC>ddpk
 
-au BufNewFile,BufRead *.vm setlocal syntax=html
-au BufNewFile,BufRead *.qrc setlocal syntax=xml
-au BufNewFile,BufRead *.pro setlocal syntax=make
+au BufNewFile,BufRead *.vm setlocal filetype=html
+au BufNewFile,BufRead *.qrc setlocal filetype=xml
+au BufNewFile,BufRead *.pro setlocal filetype=make
+au BufNewFile,BufRead *.proto setlocal filetype=proto
 au FileType xhtml,html,php,xml,xsd,ebuild,jsp,java,vim,cpp,c,h,tex,plaintex,xslt,python,po,htmldjango setlocal fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
 au BufRead */package.mask setlocal textwidth=75 fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
 au BufRead */ChangeLog setlocal textwidth=75 fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
