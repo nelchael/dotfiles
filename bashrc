@@ -150,9 +150,6 @@ function man() {
 	fi
 }
 
-# whois:
-function whois() { /usr/bin/whois -h whois.ripe.net "${@}"; }
-
 # keychain handling:
 function keychain() {
 	if [[ -z "${1}" ]]; then
