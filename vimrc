@@ -32,6 +32,7 @@ set wildignore=*.o,*~,*.la,*.*lo*,*.aux
 set wildmenu
 set wmh=0
 set nofsync
+set autowrite
 
 if v:version >= 700
 	set nuw=5
