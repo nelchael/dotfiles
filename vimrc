@@ -58,6 +58,8 @@ endif
 abbrev #d #define
 abbrev #i #include
 
+command! -bang -nargs=? W w<bang> <args>
+
 map <F5> :w<CR>:make<CR>
 imap <F5> <ESC>:w<CR>:make<CR>i
 
