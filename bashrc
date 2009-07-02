@@ -79,10 +79,16 @@ fi
 		'*history'
 		'*rc'
 	)
+	archives=(
+		'*.war'
+	)
 	for i in "${textfiles[@]}"; do
 		export LS_COLORS="${LS_COLORS}${i}=00;32:"
 	done
-	unset textfiles i
+	for i in "${archives[@]}"; do
+		export LS_COLORS="${LS_COLORS}${i}=01;31:"
+	done
+	unset textfiles archives i
 }
 
 # Disallow coredumps:
