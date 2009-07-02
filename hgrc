@@ -7,16 +7,17 @@ showfunc = true
 alias =
 churn =
 color =
+convert =
 extdiff =
 fetch =
 gpg =
 graphlog =
 hgk =
+nelchaelhgext = 
+parentrevspec =
 purge =
 record =
 transplant =
-convert =
-nelchaelhgext = 
 
 [ui]
 email = nelchael@local
@@ -24,7 +25,6 @@ username = Krzysztof Pawlik (nelchael)
 ignore = ~/.hgignore
 
 [defaults]
-cdiff = -q
 pull = -u
 revert = --no-backup
 remove = -v
@@ -32,10 +32,9 @@ add = -v
 addremove = -v
 
 [extdiff]
-cmd.cdiff = colordiff
-opts.cdiff = -uprN
 cmd.diffstat = _diffstat
 opts.diffstat = -uprN
+cmd.kdiff = kdiff3
 
 [alias]
 io = inout
