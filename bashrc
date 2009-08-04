@@ -92,7 +92,8 @@ fi
 }
 
 # Disallow coredumps:
-ulimit -c 0
+#ulimit -c 0
+ulimit -c 9999999
 
 # Change the window title of X terminals:
 case ${TERM} in
@@ -139,7 +140,11 @@ PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\W\[\e[0m\]\$ '
 
 # Enable use of ccache
 [[ -n "$(type -P ccache)" ]] && {
-	export PATH=/usr/lib/ccache/bin:${PATH}
+	if [[ -d /usr/lib/ccache/bin ]]; then
+		export PATH=/usr/lib/ccache/bin:${PATH}
+	else
+		export PATH=/usr/lib/ccache:${PATH}
+	fi
 	export CCACHE_DIR=/var/tmp/nelchael-ccache
 	[[ ! -d "${CCACHE_DIR}" ]] && {
 		mkdir -p "${CCACHE_DIR}"
