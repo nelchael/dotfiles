@@ -4,7 +4,6 @@
 showfunc = true
 
 [extensions]
-alias =
 churn =
 color =
 convert =
@@ -13,7 +12,7 @@ fetch =
 gpg =
 graphlog =
 hgk =
-nelchaelhgext = 
+nelchaelhgext =
 parentrevspec =
 purge =
 record =
