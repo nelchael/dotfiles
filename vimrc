@@ -33,6 +33,7 @@ set wildmenu
 set wmh=0
 set nofsync
 set autowrite
+set foldenable
 
 if v:version >= 700
 	set nuw=5
@@ -117,7 +118,8 @@ let g:secure_modelines_allowed_items = [
 			\ "nowrap",			"wrap",
 			\ "spell",			"spelllang",
 			\ "encoding",		"enc",
-			\ "fileencoding",	"fenc"
+			\ "fileencoding",	"fenc",
+			\ "foldmethod",		"fdm"
 			\ ]
 let g:secure_modelines_verbose = 0
 
