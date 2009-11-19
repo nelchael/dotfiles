@@ -145,7 +145,7 @@ PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\W\[\e[0m\]\$ '
 	else
 		export PATH=/usr/lib/ccache:${PATH}
 	fi
-	export CCACHE_DIR=/var/tmp/nelchael-ccache
+	export CCACHE_DIR=${HOME}/.ccache
 	[[ ! -d "${CCACHE_DIR}" ]] && {
 		mkdir -p "${CCACHE_DIR}"
 		chmod 700 "${CCACHE_DIR}"
