@@ -28,7 +28,7 @@ set textwidth=2048
 set ts=4
 set viminfo='1000,f1,:1000,/1000
 set whichwrap+=<,>,[,]
-set wildignore=*.o,*~,*.la,*.*lo*,*.aux
+set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d
 set wildmenu
 set wmh=0
 set nofsync
@@ -64,9 +64,6 @@ command! -bang -nargs=? W w<bang> <args>
 map <F5> :w<CR>:make<CR>
 imap <F5> <ESC>:w<CR>:make<CR>i
 
-map <F1> :!man <cWORD><CR>
-imap <F1> <ESC>:!man <cWORD><CR>i
-
 map Z :set list!<CR>
 
 map <silent> <C-b> :%s/[\t ]\+$//<CR>
@@ -74,6 +71,7 @@ map <silent> <C-b> :%s/[\t ]\+$//<CR>
 imap <C-e> <ESC><C-e>a
 imap <C-y> <ESC><C-y>a
 
+map <F1> :A<CR>
 map <F2> :bn<CR>
 map <F3> :bp<CR>
 
@@ -119,7 +117,9 @@ let g:secure_modelines_allowed_items = [
 			\ "spell",			"spelllang",
 			\ "encoding",		"enc",
 			\ "fileencoding",	"fenc",
-			\ "foldmethod",		"fdm"
+			\ "foldmethod",		"fdm",
+			\ "tabstop",		"ts",
+			\ "shiftwidth",		"sw"
 			\ ]
 let g:secure_modelines_verbose = 0
 
