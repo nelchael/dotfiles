@@ -5,8 +5,8 @@ filetype on
 filetype indent on
 filetype plugin on
 runtime ftplugin/man.vim
-set encoding=iso8859-2
-set fileencodings^=iso8859-2
+set encoding=utf-8
+set fileencodings^=utf-8
 set autoindent
 set background=dark
 set backspace=2
@@ -81,17 +81,13 @@ au BufNewFile,BufRead *.vm setlocal filetype=html
 au BufNewFile,BufRead *.qrc setlocal filetype=xml
 au BufNewFile,BufRead *.pro setlocal filetype=make
 au BufNewFile,BufRead *.proto setlocal filetype=proto
-au FileType xhtml,html,php,xml,xsd,ebuild,jsp,java,vim,cpp,c,h,tex,plaintex,xslt,python,po,htmldjango setlocal fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
-au BufRead */package.mask setlocal textwidth=75 fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
-au BufRead */ChangeLog setlocal textwidth=75 fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
-au BufRead *.pdf setlocal fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
-au BufRead *.sql setlocal fileencoding=utf-8 encoding=utf-8 fileencodings=utf-8,default
+au BufRead */package.mask setlocal textwidth=75
+au BufRead */ChangeLog setlocal textwidth=75
 au BufRead */hgrc setlocal filetype=dosini
 au FileType tex,plaintex setlocal textwidth=100
 au BufReadCmd *.jar,*.war,*.ear call zip#Browse(expand("<amatch>"))
 au BufReadPre *.pdf set ro
 au BufReadPost *.pdf silent %!pdftotext -nopgbrk "%" -
-au BufReadPost *.xnots setlocal fileencoding=utf-8 encoding=utf-8 filetype=xnots
 au FileType help nmap <buffer> <Return> <C-]>
 au FileType man nmap <buffer> <Return> <C-]>
 au FileType help nmap <buffer> <BS> <C-T>
