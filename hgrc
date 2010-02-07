@@ -24,11 +24,13 @@ username = Krzysztof Pawlik (nelchael)
 ignore = ~/.hgignore
 
 [defaults]
-pull = -u
-revert = --no-backup
-remove = -v
 add = -v
 addremove = -v
+backout = --merge
+commit = -v
+pull = -u
+remove = -v
+revert = --no-backup
 
 [extdiff]
 cmd.diffstat = _diffstat
