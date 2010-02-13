@@ -122,8 +122,8 @@ export PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin
 export LESS='-R -M -x4'
 
 # bash history settings:
-export HISTFILESIZE=2500
-export HISTSIZE=2500
+export HISTFILESIZE=5000
+export HISTSIZE=5000
 
 # For xmllint --format:
 export XMLLINT_INDENT="	"
