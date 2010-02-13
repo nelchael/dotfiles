@@ -34,6 +34,8 @@ set wmh=0
 set nofsync
 set autowrite
 set foldenable
+set scrolloff=4
+set hidden
 
 if v:version >= 700
 	set nuw=5
@@ -106,6 +108,7 @@ map! <c-CR> <c-n>
 
 map <F9> :%!xmllint --format -<CR>
 
+set nomodeline
 let g:secure_modelines_allowed_items = [
 			\ "textwidth",		"tw",
 			\ "filetype",		"ft",
