@@ -7,3 +7,4 @@ syntax: glob
 *.pyc
 *.pyo
 .*.swp
+gmon.out
