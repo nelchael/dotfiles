@@ -165,7 +165,7 @@ function man() {
 function keychain() {
 	if [[ -z "${1}" ]]; then
 		export PORTDIR="${HOME}/gentoo/gentoo-x86"
-		eval $(/usr/bin/keychain --quiet --eval --agents gpg,ssh id_dsa BC555551)
+		eval $(/usr/bin/keychain --quiet --eval --agents gpg,ssh id_dsa F6A80E46)
 	else
 		case "${1}" in
 			--stop|-s|stop)
