@@ -169,7 +169,7 @@ function keychain() {
 	else
 		case "${1}" in
 			--stop|-s|stop)
-				/usr/bin/keychain --quiet --stop all
+				/usr/bin/keychain --attempts 3 --quiet --stop all
 			;;
 			*)
 				/usr/bin/keychain ${@}
