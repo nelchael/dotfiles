@@ -122,10 +122,10 @@ let g:secure_modelines_allowed_items = [
 			\ ]
 let g:secure_modelines_verbose = 0
 
-if filereadable("/home/nelchael/bin/list-unzip")
-	let g:zip_unzipcmd = "/home/nelchael/bin/list-unzip"
+if filereadable(expand("~/bin/list-unzip"))
+	let g:zip_unzipcmd = expand("~/bin/list-unzip")
 endif
 
-if filereadable("/home/nelchael/.vimrc-site")
-	source /home/nelchael/.vimrc-site
+if filereadable(expand("~/.vimrc-site"))
+	source ~/.vimrc-site
 endif
