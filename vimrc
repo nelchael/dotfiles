@@ -21,7 +21,7 @@ set lazyredraw
 set lcs=tab:>.,eol:$
 set nu
 set showcmd
-set statusline=%<%f\ (%{&encoding})\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%n:%<%f\ (%{&filetype},\ %{&encoding})\ %m%r%=(%P)\ line:%4l/%-4L\ col:%-3v
 set sw=4
 set termencoding=iso8859-2
 set textwidth=2048
