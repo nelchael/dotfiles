@@ -161,23 +161,6 @@ function man() {
 	fi
 }
 
-# keychain handling:
-function keychain() {
-	if [[ -z "${1}" ]]; then
-		export PORTDIR="${HOME}/gentoo/gentoo-x86"
-		eval $(/usr/bin/keychain --quiet --eval --agents gpg,ssh id_dsa F6A80E46)
-	else
-		case "${1}" in
-			--stop|-s|stop)
-				/usr/bin/keychain --attempts 3 --quiet --stop all
-			;;
-			*)
-				/usr/bin/keychain ${@}
-			;;
-		esac
-	fi
-}
-
 bind -x '"\C-\M-R": /usr/bin/reset'
 
 function mvnsrc() {
