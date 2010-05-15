@@ -18,36 +18,34 @@ set hlsearch
 set incsearch
 set laststatus=2
 set lazyredraw
-set lcs=tab:>.,eol:$
-set nu
+set listchars=tab:>.,eol:$
+set number
 set showcmd
 set statusline=%n:%<%f\ (%{&filetype},\ %{&encoding})\ %m%r%=(%P)\ line:%4l/%-4L\ col:%-3v
-set sw=4
+set shiftwidth=4
 set termencoding=iso8859-2
 set textwidth=2048
-set ts=4
+set tabstop=4
 set viminfo='1000,f1,:1000,/1000
 set whichwrap+=<,>,[,]
 set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d
 set wildmenu
-set wmh=0
+set winminheight=0
 set nofsync
+set noswapsync
 set autowrite
 set foldenable
 set scrolloff=4
 set hidden
+set numberwidth=5
+set nomodeline
 
-if v:version >= 700
-	set nuw=5
-endif
-
+" Tweak some settings if we have GUI running:
 if has("gui_running")
 	colorscheme lingodirector
 	set guioptions-=T
 	set guioptions-=m
-	if v:version >= 700
-		set cursorline
-	endif
+	set cursorline
 else
 	if &term =~ "linux"
 		colorscheme default
@@ -58,16 +56,13 @@ else
 	endif
 endif
 
-abbrev #d #define
 abbrev #i #include
 
+" W == w
 command! -bang -nargs=? W w<bang> <args>
 
-map <F5> :w<CR>:make<CR>
-imap <F5> <ESC>:w<CR>:make<CR>i
-
+" Some useful key bindings:
 map Z :set list!<CR>
-
 map <silent> <C-b> :%s/[\t ]\+$//<CR>
 
 imap <C-e> <ESC><C-e>a
@@ -77,38 +72,30 @@ map <F1> :A<CR>
 map <F2> :bn<CR>
 map <F3> :bp<CR>
 
-map <C-j> <ESC>ddpk
-
-au BufNewFile,BufRead *.vm setlocal filetype=html
-au BufNewFile,BufRead *.qrc setlocal filetype=xml
-au BufNewFile,BufRead *.pro setlocal filetype=make
-au BufNewFile,BufRead *.proto setlocal filetype=proto
-au BufRead */package.mask setlocal textwidth=75
-au BufRead */ChangeLog setlocal textwidth=75
-au BufRead */hgrc setlocal filetype=dosini
-au FileType tex,plaintex setlocal textwidth=100
-au BufReadCmd *.jar,*.war,*.ear call zip#Browse(expand("<amatch>"))
-au BufReadPre *.pdf set ro
-au BufReadPost *.pdf silent %!pdftotext -nopgbrk "%" -
-au FileType help nmap <buffer> <Return> <C-]>
-au FileType man nmap <buffer> <Return> <C-]>
-au FileType help nmap <buffer> <BS> <C-T>
-au FileType man nmap <buffer> <BS> <C-T>
+map <F9> :%!xmllint --format -<CR>
 
 vnoremap < <gv
 vnoremap > >gv
 
-map <F10> :set paste<CR>
-map <F11> :set nopaste<CR>
-imap <F10> <C-O>:set paste<CR>
-imap <F11> <nop>
-set pastetoggle=<F11>
+" Set filetype for some file patterns:
+au BufNewFile,BufRead *.pro setlocal filetype=make
+au BufNewFile,BufRead *.proto setlocal filetype=proto
+au BufNewFile,BufRead *.qrc setlocal filetype=xml
+au BufNewFile,BufRead *.vm setlocal filetype=html
 
-map! <c-CR> <c-n>
+" Tweak settings for some file types:
+au BufRead */ChangeLog setlocal textwidth=75
+au BufRead */hgrc setlocal filetype=dosini
+au BufRead */package.mask setlocal textwidth=75
+au FileType tex,plaintex setlocal textwidth=100
 
-map <F9> :%!xmllint --format -<CR>
+" Remap some keys for man & help:
+au FileType help nmap <buffer> <BS> <C-T>
+au FileType help nmap <buffer> <Return> <C-]>
+au FileType man nmap <buffer> <BS> <C-T>
+au FileType man nmap <buffer> <Return> <C-]>
 
-set nomodeline
+" Configure secure modelines:
 let g:secure_modelines_allowed_items = [
 			\ "textwidth",		"tw",
 			\ "filetype",		"ft",
@@ -122,10 +109,12 @@ let g:secure_modelines_allowed_items = [
 			\ ]
 let g:secure_modelines_verbose = 0
 
+" Check for nicer zip output:
 if filereadable(expand("~/bin/list-unzip"))
 	let g:zip_unzipcmd = expand("~/bin/list-unzip")
 endif
 
+" Check for site-local settings:
 if filereadable(expand("~/.vimrc-site"))
 	source ~/.vimrc-site
 endif
