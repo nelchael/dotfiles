@@ -32,7 +32,6 @@ set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d
 set wildmenu
 set winminheight=0
 set nofsync
-set noswapsync
 set autowrite
 set foldenable
 set scrolloff=4
