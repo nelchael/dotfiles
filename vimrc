@@ -34,6 +34,7 @@ set winminheight=0
 set nofsync
 set autowrite
 set foldenable
+set foldmethod=marker
 set scrolloff=4
 set hidden
 set numberwidth=5
@@ -67,7 +68,6 @@ map <silent> <C-b> :%s/[\t ]\+$//<CR>
 imap <C-e> <ESC><C-e>a
 imap <C-y> <ESC><C-y>a
 
-map <F1> :A<CR>
 map <F2> :bn<CR>
 map <F3> :bp<CR>
 
