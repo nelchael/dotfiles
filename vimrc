@@ -21,7 +21,8 @@ set lazyredraw
 set listchars=tab:>.,eol:$
 set number
 set showcmd
-set statusline=%n:%<%f\ (%{&filetype},\ %{&encoding})\ %m%r%=(%P)\ line:%4l/%-4L\ col:%-3v
+set statusline=%n:%<%f\ (%{&filetype},\ %{&encoding})\ %M\ %R%=(%P)\ line:%4l/%-4L\ col:%-3v
+set titlestring=vim:\ %f\ %M
 set shiftwidth=4
 set termencoding=iso8859-2
 set textwidth=2048
