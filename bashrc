@@ -129,7 +129,8 @@ export HISTSIZE=5000
 export XMLLINT_INDENT="	"
 
 # Nice prompt colors:
-PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\W\[\e[0m\]\$ '
+export PROMPT_DIRTRIM=2
+PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\w\[\e[0m\]\$ '
 
 # Default to Qt4:
 [[ -d /usr/lib/qt4 ]] && export QTDIR=/usr/lib/qt4
