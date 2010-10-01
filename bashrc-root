@@ -1,4 +1,4 @@
-
+# vim: set ft=sh
 # profile:
 [[ -f /etc/profile ]] && source /etc/profile
 
@@ -18,12 +18,21 @@ esac
 
 export PATH=/root/bin:$PATH
 
-alias ls='ls -sh --color'
-alias ll='ls -shl --color'
-alias la='ls -sha --color'
-alias lla='ls -shal --color'
-alias s='cd ..'
-alias mv='mv -iv'
-alias cp='cp -Riv'
-alias rm='rm -iv'
+unalias -a
+
+alias l='ls -sh --color=yes'
+alias ls='ls -sh --color=yes'
+alias sl='ls -sh --color=yes'
+alias la='ls -ash --color=yes'
+alias ll='ls -lsh --color=yes'
+alias lla='ls -lash --color=yes'
+alias lss='ls -shS --color=yes'
+alias lls='ls -lshS --color=yes'
+alias cp='cp -Rvi'
 alias df='df -hP'
+alias du='du -sh'
+alias j='jobs'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias s='cd ..'
+alias ss='cd ../..'

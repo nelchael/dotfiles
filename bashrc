@@ -1,4 +1,4 @@
-
+# vim: set ft=sh
 # profile:
 [[ -f /etc/profile ]] && source /etc/profile
 
