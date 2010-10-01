@@ -1,0 +1,29 @@
+
+# profile:
+[[ -f /etc/profile ]] && source /etc/profile
+
+# Interactive?
+[[ "${-}" == *i* ]] || return
+
+[[ -f /etc/DIR_COLORS ]] && eval $(dircolors -b /etc/DIR_COLORS)
+
+case ${TERM} in
+	xterm*|rxvt|Eterm|eterm)
+		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+		;;
+	screen)
+		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+		;;
+esac
+
+export PATH=/root/bin:$PATH
+
+alias ls='ls -sh --color'
+alias ll='ls -shl --color'
+alias la='ls -sha --color'
+alias lla='ls -shal --color'
+alias s='cd ..'
+alias mv='mv -iv'
+alias cp='cp -Riv'
+alias rm='rm -iv'
+alias df='df -hP'
