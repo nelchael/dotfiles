@@ -17,6 +17,7 @@ case ${TERM} in
 esac
 
 export PATH=/root/bin:$PATH
+export PGUSER=postgres
 
 unalias -a
 
