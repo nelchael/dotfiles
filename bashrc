@@ -128,15 +128,10 @@ export XMLLINT_INDENT="	"
 export FIGNORE=CVS:.svn
 
 # Nice prompt colors:
-export PROMPT_DIRTRIM=2
 PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\w\[\e[0m\]\$ '
+export PROMPT_DIRTRIM=2
 
-# Default to Qt4:
-[[ -d /usr/lib/qt4 ]] && export QTDIR=/usr/lib/qt4
-[[ -d ~/.qt/plugins4 ]] && export QT_PLUGIN_PATH=~/.qt/plugins4
-
-# Check PYTHONPATH
-[[ -d ~/.hgextensions ]] && export PYTHONPATH=~/.hgextensions:${PYTHONPATH}
+[[ -d ~/.pylib ]] && export PYTHONPATH=~/.pylib:${PYTHONPATH}
 
 # Enable use of ccache
 [[ -n "$(type -P ccache)" ]] && {
