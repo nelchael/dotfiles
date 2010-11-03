@@ -124,6 +124,9 @@ export HISTSIZE=5000
 # For xmllint --format:
 export XMLLINT_INDENT="	"
 
+# Ignore CVS and .svn directories:
+export FIGNORE=CVS:.svn
+
 # Nice prompt colors:
 export PROMPT_DIRTRIM=2
 PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\w\[\e[0m\]\$ '
