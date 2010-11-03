@@ -4,6 +4,7 @@
 showfunc = true
 
 [extensions]
+bookmarks =
 churn =
 color =
 convert =
@@ -11,6 +12,7 @@ extdiff =
 fetch =
 gpg =
 graphlog =
+hggit =
 hgk =
 nelchaelhgext =
 parentrevspec =
