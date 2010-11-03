@@ -16,9 +16,6 @@ case ${TERM} in
 		;;
 esac
 
-export PATH=/root/bin:$PATH
-export PGUSER=postgres
-
 unalias -a
 
 alias l='ls -sh --color=yes'
@@ -37,3 +34,11 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias s='cd ..'
 alias ss='cd ../..'
+
+# Enable bash completion:
+[[ -f /etc/bash_completion ]] && source /etc/bash_completion
+
+export PATH=/root/bin:$PATH
+PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+
+export PGUSER=postgres
