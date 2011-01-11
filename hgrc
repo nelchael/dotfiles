@@ -43,3 +43,6 @@ cmd.kdiff = kdiff3
 [alias]
 io = inout
 ioq = inout -q
+
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt
