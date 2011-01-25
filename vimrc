@@ -17,7 +17,6 @@ set history=500
 set hlsearch
 set incsearch
 set laststatus=2
-set lazyredraw
 set listchars=tab:>.,eol:$
 set number
 set showcmd
