@@ -4,26 +4,26 @@
 showfunc = true
 
 [extensions]
-bookmarks =
-churn =
-color =
-convert =
-extdiff =
-fetch =
-gpg =
-graphlog =
+hgext.bookmarks =
+hgext.churn =
+hgext.color =
+hgext.convert =
+hgext.extdiff =
+hgext.fetch =
+hgext.gpg =
+hgext.graphlog =
+hgext.hgk =
+hgext.parentrevspec =
+hgext.progress =
+hgext.purge =
+hgext.record =
+hgext.transplant =
 hggit =
-hgk =
 nelchaelhgext =
-parentrevspec =
-progress =
-purge =
-record =
-transplant =
 
 [ui]
 email = nelchael@local
-username = Krzysztof Pawlik (nelchael)
+username = Krzysztof Pawlik
 ignore = ~/.hgignore
 
 [defaults]
