@@ -104,7 +104,8 @@ let g:secure_modelines_allowed_items = [
 			\ "fileencoding",	"fenc",
 			\ "foldmethod",		"fdm",
 			\ "tabstop",		"ts",
-			\ "shiftwidth",		"sw"
+			\ "shiftwidth",		"sw",
+			\ "expandtab"
 			\ ]
 let g:secure_modelines_verbose = 0
 
