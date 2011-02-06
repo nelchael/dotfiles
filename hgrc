@@ -36,13 +36,12 @@ remove = -v
 revert = --no-backup
 
 [extdiff]
-cmd.diffstat = _diffstat
-opts.diffstat = -uprN
-cmd.kdiff = kdiff3
+cmd.kompare = kompare
 
 [alias]
 io = inout
 ioq = inout -q
+diffstat = diff --stat
 
 [web]
 cacerts = /etc/ssl/certs/ca-certificates.crt
