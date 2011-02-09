@@ -2,7 +2,6 @@ syntax: glob
 *.a
 *.class
 *.d
-*.jar
 *.o
 *.pyc
 *.pyo
