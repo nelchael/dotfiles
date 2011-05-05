@@ -6,7 +6,7 @@ filetype indent on
 filetype plugin on
 runtime ftplugin/man.vim
 set encoding=utf-8
-set fileencodings^=utf-8
+set fileencodings=utf-8
 set autoindent
 set background=dark
 set backspace=2
