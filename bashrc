@@ -80,8 +80,7 @@ alias grep='grep --color=auto'
 	unset textfiles archives i
 }
 
-# Disallow coredumps:
-#ulimit -c 0
+# Enable coredumps:
 ulimit -c 9999999
 
 # Change the window title of X terminals:
