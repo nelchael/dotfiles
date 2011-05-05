@@ -38,6 +38,10 @@ alias ss='cd ../..'
 # Enable bash completion:
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 
+# Enable color for grep:
+export GREP_COLOR=34
+alias grep='grep --color=auto'
+
 export PATH=/root/bin:$PATH
 PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
 

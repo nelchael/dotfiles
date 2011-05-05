@@ -41,10 +41,8 @@ alias ss='cd ../..'
 alias ':q'='exit'
 
 # Enable color for grep:
-if [[ -n "$(grep --help | grep -- --color)" ]]; then
-	export GREP_COLOR=34
-	alias grep='grep --color=auto'
-fi
+export GREP_COLOR=34
+alias grep='grep --color=auto'
 
 # `ls' colors:
 [[ -f /etc/DIR_COLORS ]] && {
