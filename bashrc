@@ -3,8 +3,7 @@
 [[ -f /etc/profile ]] && source /etc/profile
 
 # GTK+ file name handling:
-export G_FILENAME_ENCODING=ISO-8859-2
-export G_BROKEN_FILENAMES=1
+export G_FILENAME_ENCODING=UTF-8
 
 # Sanitize Java environment:
 unset JAVA_HOME

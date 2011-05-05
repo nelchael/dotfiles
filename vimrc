@@ -23,7 +23,7 @@ set showcmd
 set statusline=%n:%<%f\ (%{&filetype},\ %{&encoding})\ %M\ %R%=(%P)\ line:%4l/%-4L\ col:%-3v
 set titlestring=vim:\ %f\ %M
 set shiftwidth=4
-set termencoding=iso8859-2
+set termencoding=utf-8
 set textwidth=2048
 set tabstop=4
 set viminfo='1000,f1,:1000,/1000
