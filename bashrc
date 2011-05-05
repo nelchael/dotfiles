@@ -68,16 +68,10 @@ alias grep='grep --color=auto'
 		'*history'
 		'*rc'
 	)
-	archives=(
-		'*.war'
-	)
 	for i in "${textfiles[@]}"; do
 		export LS_COLORS="${LS_COLORS}${i}=00;32:"
 	done
-	for i in "${archives[@]}"; do
-		export LS_COLORS="${LS_COLORS}${i}=01;31:"
-	done
-	unset textfiles archives i
+	unset textfiles i
 }
 
 # Enable coredumps:
