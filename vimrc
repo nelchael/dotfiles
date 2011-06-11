@@ -28,7 +28,7 @@ set textwidth=2048
 set tabstop=4
 set viminfo='1000,f1,:1000,/1000
 set whichwrap+=<,>,[,]
-set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d
+set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d,*.pyc,*.pyo
 set wildmenu
 set winminheight=0
 set nofsync
