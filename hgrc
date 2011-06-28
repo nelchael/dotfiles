@@ -4,15 +4,11 @@
 showfunc = true
 
 [extensions]
-hgext.bookmarks =
 hgext.churn =
 hgext.color =
-hgext.convert =
 hgext.extdiff =
-hgext.fetch =
 hgext.gpg =
 hgext.graphlog =
-hgext.hgk =
 hgext.parentrevspec =
 hgext.progress =
 hgext.purge =
