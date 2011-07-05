@@ -4,6 +4,7 @@
 showfunc = true
 
 [extensions]
+hgext.bookmarks =
 hgext.churn =
 hgext.color =
 hgext.extdiff =
