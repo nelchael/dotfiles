@@ -38,7 +38,6 @@ cmd.kompare = kompare
 [alias]
 io = inout
 ioq = inout -q
-diffstat = diff --stat
 
 [web]
 cacerts = /etc/ssl/certs/ca-certificates.crt
