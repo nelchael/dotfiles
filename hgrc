@@ -16,7 +16,9 @@ hgext.purge =
 hgext.record =
 hgext.transplant =
 hggit =
+
 nelchaelhgext =
+publishall =
 
 [ui]
 email = nelchael@local
