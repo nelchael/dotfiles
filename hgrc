@@ -33,6 +33,7 @@ commit = -v
 pull = -u
 remove = -v
 revert = --no-backup
+status = --copies
 
 [extdiff]
 cmd.kompare = kompare
