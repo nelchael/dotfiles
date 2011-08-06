@@ -26,8 +26,8 @@ username = Krzysztof Pawlik
 ignore = ~/.hgignore
 
 [defaults]
-add = -v
 addremove = -v
+add = -v
 backout = --merge
 commit = -v
 pull = -u
