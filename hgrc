@@ -7,7 +7,6 @@ showfunc = true
 hgext.bookmarks =
 hgext.churn =
 hgext.color =
-hgext.extdiff =
 hgext.gpg =
 hgext.graphlog =
 hgext.parentrevspec =
@@ -34,9 +33,6 @@ pull = -u
 remove = -v
 revert = --no-backup
 status = --copies
-
-[extdiff]
-cmd.kompare = kompare
 
 [alias]
 io = inout
