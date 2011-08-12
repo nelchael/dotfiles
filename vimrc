@@ -51,7 +51,8 @@ else
 		colorscheme default
 	else
 		set t_Co=256
-		colorscheme inkpot
+		colorscheme desert
+		silent! colorscheme inkpot
 		set mouse=ni
 	endif
 endif
