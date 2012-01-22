@@ -37,6 +37,7 @@ status = --copies
 [alias]
 io = inout
 ioq = inout -q
+rec = record
 
 [web]
 cacerts = /etc/ssl/certs/ca-certificates.crt
