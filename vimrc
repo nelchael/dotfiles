@@ -78,6 +78,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Set filetype for some file patterns:
+au BufNewFile,BufRead *.desc setlocal filetype=conf
 au BufNewFile,BufRead *.pro setlocal filetype=make
 au BufNewFile,BufRead *.qrc setlocal filetype=xml
 au BufNewFile,BufRead *.vm setlocal filetype=html
