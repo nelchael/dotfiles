@@ -101,6 +101,7 @@ export PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin
 
 # Nice less behavior:
 export LESS='-R -M -x4'
+export LESSCOLOR=yes
 
 # bash history settings:
 export HISTFILESIZE=5000
