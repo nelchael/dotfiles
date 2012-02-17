@@ -117,6 +117,7 @@ export FIGNORE=CVS:.svn
 PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\w\[\e[0m\]\$ '
 export PROMPT_DIRTRIM=2
 
+export PYTHONIOENCODING=utf-8
 [[ -d ~/.pylib ]] && export PYTHONPATH=~/.pylib:${PYTHONPATH}
 
 # Enable use of ccache
