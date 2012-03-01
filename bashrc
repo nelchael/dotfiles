@@ -43,6 +43,8 @@ alias ':q'='exit'
 export GREP_COLOR=34
 alias grep='grep --color=auto'
 
+type -P eshowkw &> /dev/null && alias eshowkw='eshowkw -O'
+
 # `ls' colors:
 [[ -f /etc/DIR_COLORS ]] && {
 	eval $(dircolors -b /etc/DIR_COLORS)
