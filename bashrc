@@ -36,8 +36,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias s='cd ..'
 alias ss='cd ../..'
-# ;)
-alias ':q'='exit'
+alias rsync='rsync --progress --human-readable'
 
 # Enable color for grep:
 export GREP_COLOR=34
