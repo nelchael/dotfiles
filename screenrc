@@ -1,0 +1,4 @@
+vbell off
+defscrollback 10000
+defnonblock on
+caption always "%{= bW}%H%{-}%{= bw}: %w%=-- %c%{-}"
