@@ -15,6 +15,7 @@ hgext.purge =
 hgext.record =
 hgext.transplant =
 hggit =
+hgsubversion =
 
 nelchaelhgext =
 publishall =
