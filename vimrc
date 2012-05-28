@@ -72,7 +72,16 @@ imap <C-y> <ESC><C-y>a
 map <F2> :bn<CR>
 map <F3> :bp<CR>
 
-map <F9> :%!xmllint --format -<CR>
+function! SmartFormatter()
+	if &l:filetype == 'xml'
+		%!xmllint --format -
+	endif
+	if &l:filetype == 'json'
+		%!python -m json.tool
+	endif
+endfunction
+
+map <F9> :call SmartFormatter()<CR>
 
 vnoremap < <gv
 vnoremap > >gv
