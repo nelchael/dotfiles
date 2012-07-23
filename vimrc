@@ -93,8 +93,10 @@ au BufNewFile,BufRead *.qrc setlocal filetype=xml
 au BufNewFile,BufRead *.vm setlocal filetype=html
 au BufRead */ChangeLog setlocal textwidth=75
 au BufRead */hgrc setlocal filetype=dosini
+au BufRead */known_hosts setlocal nowrap
 au BufRead */metadata.xml setlocal textwidth=75
 au BufRead */package.mask setlocal textwidth=75
+au FileType diff setlocal nofoldenable
 au FileType tex,plaintex setlocal textwidth=100
 
 " Remap some keys for man & help:
