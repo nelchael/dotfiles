@@ -2,7 +2,10 @@
 
 APPLY_FILES="bashrc hgignore hgrc inputrc screenrc vimrc"
 
+__DIFF="$(type -P colordiff)"
+[[ -z "${__DIFF}" ]] && __DIFF="diff"
+
 for i in ${APPLY_FILES}; do
-	colordiff -u "${HOME}/.${i}" "${i}"
+	"${__DIFF}" -u "${HOME}/.${i}" "${i}"
 	cp -fv "${i}" "${HOME}/.${i}"
 done
