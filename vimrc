@@ -46,6 +46,7 @@ if has("gui_running")
 	set guioptions-=T
 	set guioptions-=m
 	set cursorline
+	set mousemodel=popup
 else
 	if &term =~ "linux"
 		colorscheme default
@@ -68,6 +69,8 @@ map <silent> <C-b> :%s/[\t ]\+$//<CR>
 
 imap <C-e> <ESC><C-e>a
 imap <C-y> <ESC><C-y>a
+
+imap <S-Insert> <MiddleMouse>
 
 map <F2> :bn<CR>
 map <F3> :bp<CR>
