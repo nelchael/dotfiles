@@ -119,7 +119,7 @@ let g:secure_modelines_allowed_items = [
 			\ "foldmethod",		"fdm",
 			\ "tabstop",		"ts",
 			\ "shiftwidth",		"sw",
-			\ "expandtab"
+			\ "expandtab",		"et"
 			\ ]
 let g:secure_modelines_verbose = 0
 
