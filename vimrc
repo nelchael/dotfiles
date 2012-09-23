@@ -89,17 +89,20 @@ map <F9> :call SmartFormatter()<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Set filetype for some file patterns:
+" File type mappings:
 au BufNewFile,BufRead *.desc setlocal filetype=conf
 au BufNewFile,BufRead *.pro setlocal filetype=make
 au BufNewFile,BufRead *.qrc setlocal filetype=xml
 au BufNewFile,BufRead *.vm setlocal filetype=html
+au BufNewFile,BufRead */hgrc setlocal filetype=dosini
+
+" File type dependant settings:
 au BufRead */ChangeLog setlocal textwidth=75
-au BufRead */hgrc setlocal filetype=dosini
 au BufRead */known_hosts setlocal nowrap
 au BufRead */metadata.xml setlocal textwidth=75
 au BufRead */package.mask setlocal textwidth=75
 au FileType diff setlocal nofoldenable
+au FileType spec setlocal textwidth=80
 au FileType tex,plaintex setlocal textwidth=100
 
 " Remap some keys for man & help:
