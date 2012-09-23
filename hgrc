@@ -39,6 +39,6 @@ ioq = inout -q
 rec = record
 
 [web]
-cacerts = /etc/ssl/certs/ca-certificates.crt
+cacerts = /etc/ssl/certs/ca-bundle.crt
 
 %include .hgrc-site
