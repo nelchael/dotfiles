@@ -116,9 +116,11 @@ export LESS='-R -M -x4'
 export LESSCOLOR=yes
 
 # bash history settings:
-export HISTFILESIZE=5000
-export HISTSIZE=5000
+export HISTFILESIZE=10000
+export HISTSIZE=10000
 export HISTCONTROL=erasedups
+
+shopt -s histappend
 
 # For xmllint --format:
 export XMLLINT_INDENT="	"
