@@ -42,11 +42,10 @@ set nomodeline
 
 " Tweak some settings if we have GUI running:
 if has("gui_running")
-	colorscheme lingodirector
+	colorscheme desert
+	silent! colorscheme inkpot
 	set guioptions-=T
 	set guioptions-=m
-	set cursorline
-	set mousemodel=popup
 else
 	if &term =~ "linux"
 		colorscheme default
