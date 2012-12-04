@@ -17,7 +17,7 @@ set history=500
 set hlsearch
 set incsearch
 set laststatus=2
-set listchars=tab:>.,eol:$
+set listchars=tab:\|\ ,eol:$,trail:_
 set number
 set showcmd
 set statusline=%n:%<%f\ (%{&filetype},\ %{&encoding})\ %M\ %R%=(%P)\ line:%4l/%-4L\ col:%-3v
