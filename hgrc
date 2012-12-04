@@ -24,19 +24,18 @@ username = Krzysztof Pawlik
 ignore = ~/.hgignore
 
 [defaults]
-addremove = -v
-add = -v
+addremove = --verbose
+add = --verbose
 backout = --merge
-commit = -v
-pull = -u
-remove = -v
+commit = --verbose
+purge = --verbose
+remove = --verbose
 revert = --no-backup
 status = --copies
 
 [alias]
 io = inout
 ioq = inout -q
-rec = record
 
 [web]
 cacerts = /etc/ssl/certs/ca-bundle.crt
