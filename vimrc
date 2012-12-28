@@ -12,7 +12,6 @@ set background=dark
 set backspace=2
 set gdefault
 set guifont=Consolas\ 10
-set history=50
 set history=500
 set hlsearch
 set incsearch
@@ -46,6 +45,7 @@ if has("gui_running")
 	silent! colorscheme inkpot
 	set guioptions-=T
 	set guioptions-=m
+	behave mswin
 else
 	if &term =~ "linux"
 		colorscheme default
