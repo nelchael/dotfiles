@@ -33,7 +33,6 @@ alias j='jobs'
 alias mv='mv -iv'
 alias rm='rm -iv'
 alias s='cd ..'
-alias ss='cd ../..'
 
 # Enable bash completion:
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
