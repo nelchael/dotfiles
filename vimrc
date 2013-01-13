@@ -38,6 +38,7 @@ set scrolloff=4
 set hidden
 set numberwidth=5
 set nomodeline
+set debug=beep
 
 " Tweak some settings if we have GUI running:
 if has("gui_running")
@@ -45,7 +46,7 @@ if has("gui_running")
 	silent! colorscheme inkpot
 	set guioptions-=T
 	set guioptions-=m
-	behave mswin
+	set mousemodel=popup
 else
 	if &term =~ "linux"
 		colorscheme default
@@ -53,7 +54,7 @@ else
 		set t_Co=256
 		colorscheme desert
 		silent! colorscheme inkpot
-		set mouse=ni
+		set mouse=niv
 	endif
 endif
 
