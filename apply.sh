@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPLY_FILES="bashrc hgignore hgrc inputrc screenrc vimrc"
+APPLY_FILES="bashrc dir_colors hgignore hgrc inputrc screenrc vimrc"
 
 __DIFF="$(type -P colordiff)"
 [[ -z "${__DIFF}" ]] && __DIFF="diff"

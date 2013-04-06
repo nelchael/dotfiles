@@ -46,42 +46,13 @@ type -P eshowkw &> /dev/null && alias eshowkw='eshowkw -O'
 # `ls' colors:
 [[ -f /etc/DIR_COLORS ]] && {
 	eval $(dircolors -b /etc/DIR_COLORS)
-	color_textfiles="$(for i in ${LS_COLORS//:/ }; do echo "${i}"; done | grep '*.txt' | cut -d = -f 2)"
-	color_archives="$(for i in ${LS_COLORS//:/ }; do echo "${i}"; done | grep '*.tgz' | cut -d = -f 2)"
-
-	textfiles=(
-		'*.c'
-		'*.cc'
-		'*.conf'
-		'*.cpp'
-		'*.cxx'
-		'*.h'
-		'*.hh'
-		'*.hpp'
-		'*.html'
-		'*.java'
-		'*.odp'
-		'*.ods'
-		'*.odt'
-		'*.properties'
-		'*.sxw'
-		'*.xml'
-		'*.xsl'
-		'*history'
-		'*rc'
-	)
-	archives=(
-		'*.a'
-	)
-	for i in "${textfiles[@]}"; do
-		export LS_COLORS="${LS_COLORS}${i}=${color_textfiles}:"
-	done
-	for i in "${archives[@]}"; do
-		export LS_COLORS="${LS_COLORS}${i}=${color_archives}:"
-	done
-
-	unset color_textfiles color_archives
-	unset textfiles archives i
+	current_ls_colors="${LS_COLORS}"
+	[[ -f ~/.dir_colors ]] && {
+		eval $(dircolors -b ~/.dir_colors)
+		local_ls_colors="${LS_COLORS}"
+	}
+	export LS_COLORS="${current_ls_colors}:${local_ls_colors}:*_history=00;33:*rc=00;33:"
+	unset current_ls_colors local_ls_colors
 }
 
 # Enable coredumps:
