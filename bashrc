@@ -82,7 +82,7 @@ esac
 export PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin
 
 # Nice less behavior:
-export LESS='-R -M -x4'
+export LESS='-R -M -x4 -F'
 export LESSCOLOR=yes
 export PAGER="$(which less)"
 
