@@ -85,6 +85,7 @@ export PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin
 export LESS='-R -M -x4 -F'
 export LESSCOLOR=yes
 export PAGER="$(which less)"
+export EDITOR="$(which vim)"
 
 # bash history settings:
 export HISTFILESIZE=10000
