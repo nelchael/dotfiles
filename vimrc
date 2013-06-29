@@ -11,7 +11,7 @@ set autoindent
 set background=dark
 set backspace=2
 set gdefault
-set guifont=Consolas\ 10
+set guifont=Consolas\ 11
 set history=500
 set hlsearch
 set incsearch
