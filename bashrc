@@ -9,6 +9,9 @@ export G_FILENAME_ENCODING=UTF-8
 unset JAVA_HOME
 unset JAVAC
 
+# Set umask:
+umask 0022
+
 # Interactive?
 [[ "${-}" == *i* ]] || return
 
