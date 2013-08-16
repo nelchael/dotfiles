@@ -70,6 +70,7 @@ map <silent> <C-b> :%s/[\t ]\+$//<CR>
 
 imap <C-e> <ESC><C-e>a
 imap <C-y> <ESC><C-y>a
+imap <C-f> <C-x><C-o>
 
 imap <S-Insert> <MiddleMouse>
 
