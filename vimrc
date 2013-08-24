@@ -129,6 +129,9 @@ let g:secure_modelines_allowed_items = [
 			\ ]
 let g:secure_modelines_verbose = 0
 
+" Configure enhanced Python syntax:
+let g:python_highlight_all = 1
+
 " Check for nicer zip output:
 if filereadable(expand("~/bin/list-unzip"))
 	let g:zip_unzipcmd = expand("~/bin/list-unzip")
