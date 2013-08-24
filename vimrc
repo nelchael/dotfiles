@@ -138,3 +138,8 @@ endif
 if filereadable(expand("~/.vimrc-site"))
 	source ~/.vimrc-site
 endif
+
+" Templates:
+if filereadable(expand("~/.vim/templates/python.py"))
+	au BufNewFile *.py 0r ~/.vim/templates/python.py
+endif
