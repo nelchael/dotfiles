@@ -132,6 +132,47 @@ let g:secure_modelines_verbose = 0
 " Configure enhanced Python syntax:
 let g:python_highlight_all = 1
 
+" Configure lightline:
+" (statusline is configured above anyway for systems without lightline)
+let g:lightline = {
+	\ 'colorscheme': 'jellybeans',
+	\ 'component_function': {
+	\   'modified': 'LightlineCF_Modified',
+	\   'readonly': 'LightlineCF_Readonly',
+	\   'filename': 'LightlineCF_Filename',
+	\   'fileformat': 'LightlineCF_Fileformat',
+	\   'filetype': 'LightlineCF_Filetype',
+	\   'fileencoding': 'LightlineCF_Fileencoding',
+	\   'mode': 'LightlineCF_Mode',
+	\ },
+	\ 'component_visible_condition': {
+	\   'readonly': '(&filetype != "help" && &readonly)',
+	\   'modified': '(&filetype != "help" && (&modified || !&modifiable))',
+	\ },
+\ }
+
+function! LightlineCF_Modified()
+	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+function! LightlineCF_Readonly()
+	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'RO' : ''
+endfunction
+function! LightlineCF_Filename()
+	return '' != expand('%:f') ? expand('%:f') : '[No Name]'
+endfunction
+function! LightlineCF_Fileformat()
+	return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+function! LightlineCF_Filetype()
+	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+function! LightlineCF_Fileencoding()
+	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+function! LightlineCF_Mode()
+	return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 " Check for nicer zip output:
 if filereadable(expand("~/bin/list-unzip"))
 	let g:zip_unzipcmd = expand("~/bin/list-unzip")
