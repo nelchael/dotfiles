@@ -28,6 +28,7 @@ addremove = --verbose
 add = --verbose
 backout = --merge
 commit = --verbose
+diff = --git
 purge = --verbose
 remove = --verbose
 revert = --no-backup
