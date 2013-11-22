@@ -73,6 +73,8 @@ imap <C-y> <ESC><C-y>a
 imap <C-f> <C-x><C-o>
 
 imap <S-Insert> <MiddleMouse>
+imap <C-@> <C-P>
+imap <C-Space> <C-P>
 
 map <F2> :bn<CR>
 map <F3> :bp<CR>
