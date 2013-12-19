@@ -45,3 +45,4 @@ export PATH=/root/bin:$PATH
 PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
 
 export PGUSER=postgres
+export EDITOR="$(which vim)"
