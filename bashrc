@@ -111,17 +111,10 @@ export PYTHONIOENCODING=utf-8
 [[ -d ~/.pylib ]] && export PYTHONPATH=~/.pylib:${PYTHONPATH}
 
 # Enable use of ccache
-[[ -n "$(type -P ccache)" ]] && {
-	if [[ -d /usr/lib/ccache/bin ]]; then
-		export PATH=/usr/lib/ccache/bin:${PATH}
-	else
-		export PATH=/usr/lib/ccache:${PATH}
-	fi
-	export CCACHE_DIR=${HOME}/.ccache
-	[[ ! -d "${CCACHE_DIR}" ]] && {
-		mkdir -p "${CCACHE_DIR}"
-		chmod 700 "${CCACHE_DIR}"
-	}
+export CCACHE_DIR=${HOME}/.ccache
+[[ ! -d "${CCACHE_DIR}" ]] && {
+	mkdir -p "${CCACHE_DIR}"
+	chmod 700 "${CCACHE_DIR}"
 }
 
 # Pretty man:
