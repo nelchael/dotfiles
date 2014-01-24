@@ -1,3 +1,5 @@
+# vim: set ft=dircolors
+
 .c 00;33
 .cc 00;33
 .conf 00;33
