@@ -37,6 +37,7 @@ status = --copies
 [alias]
 io = inout
 ioq = inout -q
+sta = status -mardui -C
 
 [web]
 cacerts = /etc/ssl/certs/ca-bundle.crt
