@@ -185,6 +185,13 @@ if filereadable(expand("~/.vim/templates/python.py"))
 	au BufNewFile *.py 0r ~/.vim/templates/python.py
 endif
 
+" Windows specific settings:
+if has("win32") || has("win64")
+	language English
+	let $LANG = 'en'
+	set noswapfile
+endif
+
 " Check for site-local settings:
 if filereadable(expand("~/.vimrc-site"))
 	source ~/.vimrc-site
