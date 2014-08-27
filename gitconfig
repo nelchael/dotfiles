@@ -1,0 +1,10 @@
+; vim: set ft=gitconfig
+
+[user]
+	email = krzysiek.pawlik@people.pl
+	name = Krzysztof Pawlik
+[push]
+	default = simple
+[color]
+	diff = auto
+	status = auto
