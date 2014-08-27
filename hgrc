@@ -15,13 +15,9 @@ hgext.purge =
 hgext.record =
 hgext.transplant =
 
-nelchaelhgext =
-publishall =
-
 [ui]
-email = nelchael@local
+email = krzysiek.pawlik@people.pl
 username = Krzysztof Pawlik
-ignore = ~/.hgignore
 
 [defaults]
 addremove = --verbose
@@ -35,8 +31,6 @@ revert = --no-backup
 status = --copies
 
 [alias]
-io = inout
-ioq = inout -q
 sta = status -mardui -C
 
 [web]
