@@ -1,6 +1,6 @@
 # vim: set ft=sh
 # profile:
-[[ -f /etc/profile ]] && source /etc/profile
+[[ -z "${MSYSTEM}" && -f /etc/profile ]] && source /etc/profile
 
 # GTK+ file name handling:
 export G_FILENAME_ENCODING=UTF-8
