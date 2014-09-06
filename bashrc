@@ -44,8 +44,6 @@ alias rsync='rsync --progress --human-readable'
 export GREP_COLOR=34
 alias grep='grep --color=auto'
 
-type -P eshowkw &> /dev/null && alias eshowkw='eshowkw -O'
-
 # `ls' colors:
 if type -P dircolors &> /dev/null; then
 	tmp_colors_file="$(mktemp tmp_colors_fileXXXXXXXX --tmpdir=/dev/shm/)"
