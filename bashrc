@@ -99,7 +99,14 @@ export XMLLINT_INDENT="	"
 export FIGNORE=CVS:.svn
 
 # Nice prompt colors:
-PS1='\[\e[06;33m\]\u@\h\[\e[0m\] \[\e[06;32m\]\w\[\e[0m\]\$ '
+PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\$ '
+if [[ -e /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
+	export GIT_PS1_SHOWDIRTYSTATE=yes
+	export GIT_PS1_SHOWUNTRACKEDFILES=yes
+	export GIT_PS1_SHOWUPSTREAM=auto
+	source /usr/share/git-core/contrib/completion/git-prompt.sh
+	PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\[\e[0;36m\]$(__git_ps1)\[\e[0m\]\$ '
+fi
 export PROMPT_DIRTRIM=2
 
 export PYTHONIOENCODING=utf-8
