@@ -54,7 +54,7 @@ if type -P dircolors &> /dev/null; then
 fi
 
 # Enable coredumps:
-ulimit -c 9999999
+ulimit -c hard
 
 # Change the window title of X terminals:
 case ${TERM} in
