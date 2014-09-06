@@ -47,16 +47,13 @@ alias grep='grep --color=auto'
 type -P eshowkw &> /dev/null && alias eshowkw='eshowkw -O'
 
 # `ls' colors:
-[[ -f /etc/DIR_COLORS ]] && {
-	eval $(dircolors -b /etc/DIR_COLORS)
-	current_ls_colors="${LS_COLORS}"
-	[[ -f ~/.dir_colors ]] && {
-		eval $(dircolors -b ~/.dir_colors)
-		local_ls_colors="${LS_COLORS}"
-	}
-	export LS_COLORS="${current_ls_colors}:${local_ls_colors}:*_history=00;33:*rc=00;33:"
-	unset current_ls_colors local_ls_colors
-}
+if type -P dircolors &> /dev/null; then
+	tmp_colors_file="$(mktemp tmp_colors_fileXXXXXXXX --tmpdir=/dev/shm/)"
+	[[ -f /etc/DIR_COLORS ]] && cat /etc/DIR_COLORS >> "${tmp_colors_file}"
+	[[ -f ~/.dir_colors ]] && cat ~/.dir_colors >> "${tmp_colors_file}"
+	eval $(dircolors -b "${tmp_colors_file}")
+	\rm -f "${tmp_colors_file}"
+fi
 
 # Enable coredumps:
 ulimit -c 9999999
