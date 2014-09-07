@@ -100,11 +100,16 @@ export FIGNORE=CVS:.svn
 
 # Nice prompt colors:
 PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\$ '
-if [[ -e /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
+if [[ -e "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
+	export __GIT_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
+elif [[ -e "/c/Program Files (x86)/Git/etc/git-prompt.sh" ]]; then
+	export __GIT_PROMPT="/c/Program Files (x86)/Git/etc/git-prompt.sh"
+fi
+if [[ -n "${__GIT_PROMPT}" ]]; then
 	export GIT_PS1_SHOWDIRTYSTATE=yes
 	export GIT_PS1_SHOWUNTRACKEDFILES=yes
 	export GIT_PS1_SHOWUPSTREAM=auto
-	source /usr/share/git-core/contrib/completion/git-prompt.sh
+	source "${__GIT_PROMPT}"
 	PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\[\e[0;36m\]$(__git_ps1)\[\e[0m\]\$ '
 fi
 export PROMPT_DIRTRIM=2
