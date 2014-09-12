@@ -134,8 +134,4 @@ function man() {
 
 bind -x '"\C-\M-R": /usr/bin/reset'
 
-function mvnsrc() {
-	mvn -Dmaven.test.skip -DdownloadSources=true eclipse:eclipse
-}
-
 [[ -e ~/.bashrc-site ]] && source ~/.bashrc-site
