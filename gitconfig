@@ -8,6 +8,8 @@
 [color]
 	diff = auto
 	status = auto
+[diff]
+	mnemonicprefix = yes
 [alias]
 	st = status
 	co = checkout
