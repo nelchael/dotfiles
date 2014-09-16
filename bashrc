@@ -57,7 +57,7 @@ fi
 ulimit -c hard
 
 # Change the window title of X terminals:
-case ${TERM} in
+case "${TERM}" in
 	xterm*|rxvt|Eterm|eterm)
 		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
 		;;
