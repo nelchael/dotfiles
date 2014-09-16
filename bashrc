@@ -72,12 +72,12 @@ esac
 # Check ~/bin/bash_completion.d for additional bash-completion scripts:
 [[ -d ~/bin/bash_completion.d ]] && {
 	for i in ~/bin/bash_completion.d/*; do
-		source ${i}
+		source "${i}"
 	done
 }
 
 # Add ~/bin, /sbin, /usr/sbin to PATH:
-export PATH=${HOME}/bin:${PATH}:/sbin:/usr/sbin
+export PATH="${HOME}/bin:${PATH}:/sbin:/usr/sbin"
 
 # Nice less behavior:
 export LESS='-R -M -x4 -F'
