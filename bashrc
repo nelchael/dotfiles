@@ -102,8 +102,12 @@ export FIGNORE=CVS:.svn
 PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\$ '
 if [[ -e "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
 	export __GIT_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
+elif [[ -e "/etc/git-prompt.sh" ]]; then
+	export __GIT_PROMPT="/etc/git-prompt.sh"
 elif [[ -e "/c/Program Files (x86)/Git/etc/git-prompt.sh" ]]; then
 	export __GIT_PROMPT="/c/Program Files (x86)/Git/etc/git-prompt.sh"
+elif [[ -e "/c/Program Files/Git/etc/git-prompt.sh" ]]; then
+	export __GIT_PROMPT="/c/Program Files/Git/etc/git-prompt.sh"
 fi
 if [[ -n "${__GIT_PROMPT}" ]]; then
 	export GIT_PS1_SHOWDIRTYSTATE=yes
