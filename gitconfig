@@ -15,4 +15,4 @@
 	co = checkout
 	ci = commit
 [include]
-	site = ~/.gitconfig-site
+	path = ~/.gitconfig-site
