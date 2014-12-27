@@ -59,10 +59,10 @@ ulimit -c hard
 # Change the window title of X terminals:
 case "${TERM}" in
 	xterm*|rxvt|Eterm|eterm)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
 		;;
 	screen)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\033\\"'
 		;;
 esac
 
