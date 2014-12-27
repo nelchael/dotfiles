@@ -14,5 +14,6 @@
 	st = status
 	co = checkout
 	ci = commit
+	pr = pull --rebase
 [include]
 	path = ~/.gitconfig-site
