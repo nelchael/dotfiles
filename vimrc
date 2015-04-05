@@ -95,6 +95,7 @@ vnoremap > >gv
 
 " File type mappings:
 au BufNewFile,BufRead *.desc setlocal filetype=conf
+au BufNewFile,BufRead *.gradle setlocal filetype=groovy
 au BufNewFile,BufRead */hgrc setlocal filetype=dosini
 au BufNewFile,BufRead *.pro setlocal filetype=make
 au BufNewFile,BufRead *.qrc setlocal filetype=xml
