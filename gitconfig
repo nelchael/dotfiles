@@ -10,6 +10,7 @@
 	status = auto
 [diff]
 	mnemonicprefix = yes
+	renames = true
 [alias]
 	st = status
 	co = checkout
