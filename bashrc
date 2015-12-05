@@ -77,7 +77,7 @@ esac
 }
 
 # Add ~/bin, /sbin, /usr/sbin to PATH:
-export PATH="${HOME}/bin:${PATH}:/sbin:/usr/sbin"
+export PATH="${HOME}/.local/bin:${PATH}:/sbin:/usr/sbin"
 
 # Nice less behavior:
 export LESS='-R -M -x4 -F'
