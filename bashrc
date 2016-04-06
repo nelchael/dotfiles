@@ -121,11 +121,13 @@ export PROMPT_DIRTRIM=2
 export PYTHONIOENCODING=utf-8
 
 # Enable use of ccache
-export CCACHE_DIR=${HOME}/.ccache
-[[ ! -d "${CCACHE_DIR}" ]] && {
-	mkdir -p "${CCACHE_DIR}"
-	chmod 700 "${CCACHE_DIR}"
-}
+if type -P ccache &> /dev/null; then
+	export CCACHE_DIR=${HOME}/.ccache
+	[[ ! -d "${CCACHE_DIR}" ]] && {
+		mkdir -p "${CCACHE_DIR}"
+		chmod 700 "${CCACHE_DIR}"
+	}
+fi
 
 # Pretty man:
 function man() {
