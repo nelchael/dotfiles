@@ -11,10 +11,12 @@
 [diff]
 	mnemonicprefix = yes
 	renames = true
+[log]
+	decorate = auto
 [alias]
 	st = status
 	co = checkout
 	ci = commit
-	pr = pull --rebase
+	tags = tag --list
 [include]
 	path = ~/.gitconfig-site
