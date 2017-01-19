@@ -18,5 +18,6 @@
 	co = checkout
 	ci = commit
 	tags = tag --list
+	branches = branch --list
 [include]
 	path = ~/.gitconfig-site
