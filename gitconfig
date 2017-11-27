@@ -14,7 +14,7 @@
 [log]
 	decorate = auto
 [alias]
-	st = status
+	st = status --branch --short
 	co = checkout
 	ci = commit
 	tags = tag --list --format '%(refname:short) -> %(objectname)'
