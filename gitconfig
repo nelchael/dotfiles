@@ -13,8 +13,13 @@
 	renames = true
 [log]
 	decorate = auto
+[rebase]
+	stat = true
+[status]
+	short = true
+	branch = true
 [alias]
-	st = status --branch --short
+	st = status
 	co = checkout
 	ci = commit
 	tags = tag --list --format '%(refname:short) -> %(objectname)'
