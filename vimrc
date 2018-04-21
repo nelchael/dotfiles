@@ -1,5 +1,9 @@
 " vim: ft=vim
 
+if has('win32') || has('win64')
+	set runtimepath^=~/.vim
+endif
+
 syntax on
 filetype on
 filetype indent on
@@ -11,7 +15,6 @@ set autoindent
 set background=dark
 set backspace=2
 set gdefault
-set guifont=Consolas\ 11
 set history=500
 set hlsearch
 set incsearch
@@ -25,7 +28,7 @@ set shiftwidth=4
 set termencoding=utf-8
 set textwidth=2048
 set tabstop=4
-set viminfo='1000,f1,:1000,/1000
+set viminfo='500,f1,:500,/500,n$HOME/.viminfo
 set whichwrap+=<,>,[,]
 set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d,*.pyc,*.pyo
 set wildmenu
@@ -48,6 +51,11 @@ if has("gui_running")
 	set guioptions-=T
 	set guioptions-=m
 	set mousemodel=popup
+	if has("win32") || has("win64")
+		set guifont=Consolas:h11
+	else
+		set guifont=Consolas\ 11
+	endif
 else
 	if &term =~ "linux"
 		colorscheme default
