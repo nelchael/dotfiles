@@ -56,16 +56,6 @@ fi
 # Enable coredumps:
 ulimit -c hard
 
-# Change the window title of X terminals:
-case "${TERM}" in
-	xterm*|rxvt|Eterm|eterm)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
-		;;
-	screen)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\033\\"'
-		;;
-esac
-
 # Enable bash completion:
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 
@@ -99,13 +89,25 @@ export XMLLINT_INDENT="	"
 export FIGNORE=CVS:.svn
 
 # Nice prompt colors:
-PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\$ '
 if [[ -e "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
 	export GIT_PS1_SHOWDIRTYSTATE=yes
 	export GIT_PS1_SHOWUNTRACKEDFILES=yes
-	export GIT_PS1_SHOWUPSTREAM=auto
+	export GIT_PS1_SHOWSTASHSTATE=yes
+	export GIT_PS1_DESCRIBE_STYLE=branch
+	export GIT_PS1_SHOWCOLORHINTS=yes
+	export GIT_PS1_SHOWUPSTREAM="auto verbose"
 	source "/usr/share/git-core/contrib/completion/git-prompt.sh"
-	PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\[\e[0;36m\]$(__git_ps1)\[\e[0m\]\$ '
+	PROMPT_COMMAND='__git_ps1 "\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\[\e[0m\]" "\[\e[0m\]\$ "; echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
+else
+	PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\$ '
+	case "${TERM}" in
+		xterm*|rxvt|Eterm|eterm)
+			PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
+			;;
+		screen)
+			PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\033\\"'
+			;;
+	esac
 fi
 export PROMPT_DIRTRIM=2
 
