@@ -18,6 +18,7 @@
 [status]
 	short = true
 	branch = true
+	showUntrackedFiles = all
 [fetch]
 	prune = true
 [alias]
