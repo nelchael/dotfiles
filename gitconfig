@@ -25,7 +25,6 @@
 	st = status
 	co = checkout
 	ci = commit
-	tags = tag --list --format '%(refname:short) -> %(objectname)'
-	branches = branch --list
+	branches = branch --list -vv
 [include]
 	path = ~/.gitconfig-site
