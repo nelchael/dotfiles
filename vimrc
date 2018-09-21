@@ -28,7 +28,7 @@ set shiftwidth=4
 set termencoding=utf-8
 set textwidth=2048
 set tabstop=4
-set viminfo='500,f1,:500,/500,n$HOME/.viminfo
+set viminfo=h,'500,f1,:500,/500,s250,<500,n$HOME/.viminfo
 set whichwrap+=<,>,[,]
 set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d,*.pyc,*.pyo
 set wildmenu
