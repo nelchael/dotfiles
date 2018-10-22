@@ -26,5 +26,6 @@
 	co = checkout
 	ci = commit
 	branches = branch --list -vv
+	outgoing = log --branches --not --remotes=origin --oneline
 [include]
 	path = ~/.gitconfig-site
