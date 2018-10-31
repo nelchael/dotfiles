@@ -56,6 +56,7 @@ if has("gui_running")
 	else
 		set guifont=Consolas\ 11
 	endif
+	set belloff=all
 else
 	if &term =~ "linux"
 		colorscheme default
