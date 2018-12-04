@@ -43,6 +43,7 @@ set numberwidth=5
 set nomodeline
 set debug=beep
 set spellsuggest=best,10
+set noshowmode
 
 " Tweak some settings if we have GUI running:
 if has("gui_running")
