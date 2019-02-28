@@ -15,6 +15,7 @@
 	decorate = auto
 [rebase]
 	stat = true
+	autoStash = true
 [status]
 	short = true
 	branch = true
