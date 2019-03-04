@@ -112,7 +112,7 @@ au BufNewFile,BufRead *.qrc setlocal filetype=xml
 au BufNewFile,BufRead *.repo setlocal filetype=dosini
 au BufNewFile,BufRead *.vm setlocal filetype=html
 au BufNewFile,BufRead */Pipfile.lock setlocal filetype=json
-au BufNewFile,BufRead Pipfile setlocal filetype=dosini
+au BufNewFile,BufRead Pipfile setlocal filetype=toml
 
 " File type dependant settings:
 au BufRead */ChangeLog setlocal textwidth=75
