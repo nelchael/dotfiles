@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APPLY_FILES="bashrc dir_colors gitconfig inputrc screenrc vimrc"
-APPLY_DIRECTORIES="vim-autoload:.vim/autoload vim-colors:.vim/colors vim-plugin:.vim/plugin"
+APPLY_DIRECTORIES="vim-autoload:.vim/autoload vim-colors:.vim/colors vim-plugin:.vim/plugin vim-syntax:.vim/syntax"
 
 __DIFF="$(type -P colordiff)"
 [[ -z "${__DIFF}" ]] && __DIFF="diff"
