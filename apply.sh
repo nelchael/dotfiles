@@ -18,7 +18,7 @@ echo "${APPLY_DIRECTORIES} " | while IFS=":" read -d " " -s src_dir dest_dir; do
 	dest_dir="${HOME}/${dest_dir}"
 	[[ -z "$(diff -Nru "${src_dir}" "${dest_dir}")" ]] && continue
 
-	"${__DIFF}" -Nru "${src_dir}" "${dest_dir}"
+	"${__DIFF}" -Nru "${dest_dir}" "${src_dir}"
 	rm -rf "${dest_dir}"
 	mkdir -p "${dest_dir}"
 	\cp -fRv "${src_dir}"/* "${dest_dir}/"
