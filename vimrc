@@ -151,6 +151,11 @@ let g:python_highlight_all = 1
 " (statusline is configured above anyway for systems without lightline)
 let g:lightline = {
 	\ 'colorscheme': 'jellybeans',
+	\ 'active': {
+	\	'left': [ [ 'mode', 'paste' ],
+	\			  [ 'readonly', 'filename', 'modified' ],
+	\			  [ 'gitbranch' ] ]
+	\ },
 	\ 'component_function': {
 	\   'modified': 'LightlineCF_Modified',
 	\   'readonly': 'LightlineCF_Readonly',
@@ -159,6 +164,7 @@ let g:lightline = {
 	\   'filetype': 'LightlineCF_Filetype',
 	\   'fileencoding': 'LightlineCF_Fileencoding',
 	\   'mode': 'LightlineCF_Mode',
+	\	'gitbranch': 'LightlineCF_Branch',
 	\ },
 	\ 'component_visible_condition': {
 	\   'readonly': '(&filetype != "help" && &readonly)',
@@ -186,6 +192,9 @@ function! LightlineCF_Fileencoding()
 endfunction
 function! LightlineCF_Mode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+function! LightlineCF_Branch()
+	return gitbranch#name() == 'master' ? '' : '[' . gitbranch#name() . ']'
 endfunction
 
 " Check for nicer zip output:
