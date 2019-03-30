@@ -194,7 +194,8 @@ function! LightlineCF_Mode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 function! LightlineCF_Branch()
-	return gitbranch#name() == 'master' ? '' : '[' . gitbranch#name() . ']'
+	let branch_name = gitbranch#name()
+	return branch_name == 'master' || branch_name == '' ? '' : 'branch:' . branch_name
 endfunction
 
 " Check for nicer zip output:
