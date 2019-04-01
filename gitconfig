@@ -28,6 +28,6 @@
 	ci = commit
 	branches = branch --list -v
 	outgoing = log --branches --not --remotes=origin --oneline
-	purge = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -d
+	purge-branches = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -d
 [include]
 	path = ~/.gitconfig-site
