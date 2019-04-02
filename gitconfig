@@ -22,6 +22,7 @@
 	showUntrackedFiles = all
 [fetch]
 	prune = true
+	recurseSubmodules = true
 [alias]
 	st = status
 	co = checkout
