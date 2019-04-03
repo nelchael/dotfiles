@@ -137,7 +137,7 @@ bind -x '"\C-\M-R": /usr/bin/reset'
 
 # HSTR settings (https://github.com/dvorka/hstr):
 if type -P hh &> /dev/null; then
-	export HH_CONFIG=hicolor,warning,keywords,casesensitive,prompt-bottom
+	export HH_CONFIG=hicolor,warning,rawhistory,keywords,casesensitive,prompt-bottom
 	export HH_PROMPT='> '
 	bind '"\C-r": "\C-ahh -- \C-j"'
 	export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
