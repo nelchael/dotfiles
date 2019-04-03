@@ -78,9 +78,11 @@ export EDITOR="$(which vim)"
 # bash history settings:
 export HISTFILESIZE=10000
 export HISTSIZE=10000
-export HISTCONTROL=erasedups
+export HISTCONTROL=erasedups:ignorespace
+export HISTIGNORE='l:ls:sl:ll:lla:lss:lls:s:bg:fg:j:history:hh --*'
 
 shopt -s histappend
+shopt -s cmdhist
 
 # For xmllint --format:
 export XMLLINT_INDENT="	"
