@@ -23,6 +23,10 @@
 [fetch]
 	prune = true
 	recurseSubmodules = true
+[gc]
+	auto = 1536
+	autoPackLimit = 32
+	autoDetach = false
 [alias]
 	st = status
 	co = checkout
