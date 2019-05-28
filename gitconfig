@@ -22,7 +22,7 @@
 	showUntrackedFiles = all
 [fetch]
 	prune = true
-	recurseSubmodules = true
+	recurseSubmodules = on-demand
 [gc]
 	auto = 1536
 	autoPackLimit = 32
