@@ -195,7 +195,7 @@ function! LightlineCF_Mode()
 endfunction
 function! LightlineCF_Branch()
 	let branch_name = gitbranch#name()
-	return branch_name == 'master' || branch_name == '' ? '' : 'branch:' . branch_name
+	return branch_name == 'master' || branch_name == '' ? '' : '' . branch_name
 endfunction
 
 " Check for nicer zip output:
