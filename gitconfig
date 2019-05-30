@@ -23,8 +23,6 @@
 [fetch]
 	prune = true
 	recurseSubmodules = on-demand
-[submodule]
-	recurse = true
 [gc]
 	auto = 1536
 	autoPackLimit = 32
