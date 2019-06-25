@@ -2,8 +2,9 @@
 # profile:
 [[ -z "${MSYSTEM}" && -f /etc/profile ]] && source /etc/profile
 
-# GTK+ file name handling:
+# Encoding vars:
 export G_FILENAME_ENCODING=UTF-8
+export PYTHONIOENCODING=utf-8
 
 # Sanitize Java environment:
 unset JAVA_HOME
@@ -90,7 +91,21 @@ export XMLLINT_INDENT="	"
 # Ignore CVS and .svn directories:
 export FIGNORE=CVS:.svn
 
-# Nice prompt colors:
+# Default PS1:
+export PROMPT_DIRTRIM=2
+PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\$ '
+
+# Set terminal title using PROMPT_COMMAND:
+case "${TERM}" in
+	xterm*|rxvt|Eterm|eterm)
+		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
+		;;
+	screen)
+		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\033\\"'
+		;;
+esac
+
+# Augument prompt with git information:
 if [[ -e "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
 	export GIT_PS1_SHOWDIRTYSTATE=yes
 	export GIT_PS1_SHOWUNTRACKEDFILES=yes
@@ -99,21 +114,8 @@ if [[ -e "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
 	export GIT_PS1_SHOWCOLORHINTS=yes
 	export GIT_PS1_SHOWUPSTREAM="auto verbose"
 	source "/usr/share/git-core/contrib/completion/git-prompt.sh"
-	PROMPT_COMMAND='__git_ps1 "\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\[\e[0m\]" "\[\e[0m\]\$ "; echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
-else
-	PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\$ '
-	case "${TERM}" in
-		xterm*|rxvt|Eterm|eterm)
-			PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
-			;;
-		screen)
-			PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\033\\"'
-			;;
-	esac
+	PROMPT_COMMAND="__git_ps1 '\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;32m\]\w\[\e[0m\]\[\e[0m\]' '\[\e[0m\]\$ '; ${PROMPT_COMMAND}"
 fi
-export PROMPT_DIRTRIM=2
-
-export PYTHONIOENCODING=utf-8
 
 # Enable use of ccache
 if type -P ccache &> /dev/null; then
