@@ -19,7 +19,7 @@
 [status]
 	short = true
 	branch = true
-	showUntrackedFiles = all
+	showUntrackedFiles = normal
 [fetch]
 	prune = true
 	recurseSubmodules = on-demand
