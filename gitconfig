@@ -17,7 +17,7 @@
 	stat = true
 	autoStash = true
 [status]
-	short = true
+	short = false
 	branch = true
 	showUntrackedFiles = normal
 [fetch]
@@ -30,7 +30,7 @@
 	autoPackLimit = 32
 	autoDetach = false
 [alias]
-	st = status
+	st = status --short
 	co = checkout
 	ci = commit
 	branches = branch --list -v
