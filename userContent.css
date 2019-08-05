@@ -1,0 +1,15 @@
+/*
+ * ${profile_path}/chrome/userContent.css
+ */
+
+@-moz-document url("about:newtab") {
+	body, div.outer-wrapper {
+		background-color: #f9f9fa !important;
+	}
+}
+
+@-moz-document url("about:home") {
+	body, div.outer-wrapper {
+		background-color: #f9f9fa !important;
+	}
+}
