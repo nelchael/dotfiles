@@ -80,7 +80,7 @@ export EDITOR="$(which vim)"
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 export HISTCONTROL=erasedups:ignorespace
-export HISTIGNORE='l:ls:sl:ll:lla:lss:lls:s:bg:fg:j:history:hh --*'
+export HISTIGNORE='l:ls:sl:ll:lla:lss:lls:s:bg:fg:j:history:hstr --*'
 
 shopt -s histappend
 shopt -s cmdhist
