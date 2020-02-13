@@ -94,7 +94,7 @@ function! SmartFormatter()
 		%!xmllint --format -
 	endif
 	if &l:filetype == 'json'
-		%!python -m json.tool
+		%!python -m json.tool --sort-keys
 	endif
 endfunction
 
