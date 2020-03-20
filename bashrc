@@ -42,7 +42,7 @@ alias s='cd ..'
 alias rsync='rsync --progress --human-readable'
 
 # Enable color for grep:
-export GREP_COLOR=35
+export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
 alias grep='grep --color=auto'
 
 # `ls' colors:
