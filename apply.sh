@@ -3,13 +3,10 @@
 APPLY_FILES="bashrc dir_colors gitconfig inputrc screenrc vimrc"
 APPLY_DIRECTORIES="vim-autoload:.vim/autoload vim-colors:.vim/colors vim-plugin:.vim/plugin vim-syntax:.vim/syntax vim-indent:.vim/indent"
 
-__DIFF="$(type -P colordiff)"
-[[ -z "${__DIFF}" ]] && __DIFF="diff"
-
 for i in ${APPLY_FILES}; do
 	[[ -z "$(diff -Nu "${i}" "${HOME}/.${i}")" ]] && continue
 
-	"${__DIFF}" -Nu "${HOME}/.${i}" "${i}"
+	diff --color=auto -Nu "${HOME}/.${i}" "${i}"
 	\cp -f "${i}" "${HOME}/.${i}"
 done
 
@@ -18,7 +15,7 @@ echo "${APPLY_DIRECTORIES} " | while IFS=":" read -d " " -s src_dir dest_dir; do
 	dest_dir="${HOME}/${dest_dir}"
 	[[ -z "$(diff -Nru "${src_dir}" "${dest_dir}")" ]] && continue
 
-	"${__DIFF}" -Nru "${dest_dir}" "${src_dir}"
+	diff --color=auto -Nru "${dest_dir}" "${src_dir}"
 	rm -rf "${dest_dir}"
 	mkdir -p "${dest_dir}"
 	\cp -fRv "${src_dir}"/* "${dest_dir}/"
