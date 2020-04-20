@@ -38,7 +38,7 @@ alias s='cd ..'
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 
 # Enable color for grep:
-export GREP_COLOR=34
+export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
 alias grep='grep --color=auto'
 
 export PATH=/root/bin:$PATH
