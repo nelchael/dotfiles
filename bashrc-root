@@ -1,4 +1,4 @@
-# vim: set ft=sh
+# vim: set ft=bash
 # profile:
 [[ -f /etc/profile ]] && source /etc/profile
 
@@ -18,6 +18,7 @@ esac
 
 unalias -a
 
+# Various `ls' flavors:
 alias l='ls -sh --color=yes'
 alias ls='ls -sh --color=yes'
 alias sl='ls -sh --color=yes'
@@ -26,6 +27,10 @@ alias ll='ls -lsh --color=yes'
 alias lla='ls -lash --color=yes'
 alias lss='ls -shS --color=yes'
 alias lls='ls -lshS --color=yes'
+
+# Other aliases:
+alias cal='cal -m'
+alias caly='cal -y -m'
 alias cp='cp -Rvi'
 alias df='df -hP'
 alias du='du -sh'
@@ -33,16 +38,55 @@ alias j='jobs'
 alias mv='mv -iv'
 alias rm='rm -iv'
 alias s='cd ..'
-
-# Enable bash completion:
-[[ -f /etc/bash_completion ]] && source /etc/bash_completion
+alias rsync='rsync --progress --human-readable'
 
 # Enable color for grep:
 export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
 alias grep='grep --color=auto'
 
+# Add ~/bin to PATH:
 export PATH=/root/bin:$PATH
-PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+
+# Nice less behavior:
+export LESS='-R -M -x4 -F'
+export LESSCOLOR=yes
+export PAGER="$(which less)"
+export EDITOR="$(which vim)"
+
+# bash history settings:
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+export HISTCONTROL=erasedups:ignorespace
+export HISTIGNORE='l:ls:sl:ll:lla:lss:lls:s:bg:fg:j:history:hstr --*'
+
+shopt -s histappend
+shopt -s cmdhist
+
+# Enable bash completion:
+[[ -f /etc/bash_completion ]] && source /etc/bash_completion
+
+# Default PS1:
+export PROMPT_DIRTRIM=2
+PS1='\[\e[0;31m\]\u@\h\[\e[0m\] \[\e[1;34m\]\w\[\e[0m\]\$ '
+
+# Set terminal title using PROMPT_COMMAND:
+case "${TERM}" in
+	xterm*|rxvt|Eterm|eterm)
+		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
+		;;
+	screen)
+		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\033\\"'
+		;;
+esac
+
+bind -x '"\C-\M-R": /usr/bin/reset'
+
+# HSTR settings (https://github.com/dvorka/hstr):
+if type -P hstr &> /dev/null; then
+	export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
+	export HSTR_PROMPT='> '
+	bind '"\C-r": "\C-ahstr -- \C-j"'
+	export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+fi
 
 export PGUSER=postgres
-export EDITOR="$(which vim)"
