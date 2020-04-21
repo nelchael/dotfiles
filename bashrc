@@ -93,7 +93,7 @@ export FIGNORE=CVS:.svn
 
 # Default PS1:
 export PROMPT_DIRTRIM=2
-PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;34m\]\w\[\e[0m\]\$ '
+PS1='\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\$ '
 
 # Set terminal title using PROMPT_COMMAND:
 case "${TERM}" in
@@ -114,7 +114,7 @@ if [[ -e "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
 	export GIT_PS1_SHOWCOLORHINTS=yes
 	export GIT_PS1_SHOWUPSTREAM="auto verbose"
 	source "/usr/share/git-core/contrib/completion/git-prompt.sh"
-	PROMPT_COMMAND="__git_ps1 '\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[0;34m\]\w\[\e[0m\]\[\e[0m\]' '\[\e[0m\]\$ '; ${PROMPT_COMMAND}"
+	PROMPT_COMMAND="__git_ps1 '\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\[\e[0m\]' '\[\e[0m\]\$ '; ${PROMPT_COMMAND}"
 fi
 
 # Enable use of ccache
@@ -156,7 +156,7 @@ if [[ "${OS}" = "Windows_NT" ]]; then
 	fast_git_ps1() {
 		printf -- "$(git branch 2>/dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ (\1)/')"
 	}
-	PS1='\[\e[0;33m\]\u@\h\[\e[0m\] \[\e[1;34m\]\w\[\e[0m\]\[\e[0;36m\]$(fast_git_ps1)\[\e[0m\]\$ '
+	PS1='\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\[\e[36m\]$(fast_git_ps1)\[\e[0m\]\$ '
 fi
 
 [[ -e ~/.bashrc-site ]] && source ~/.bashrc-site
