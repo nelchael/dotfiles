@@ -29,6 +29,8 @@
 	auto = 1536
 	autoPackLimit = 32
 	autoDetach = false
+[stash]
+	showPatch = true
 [alias]
 	st = status --short
 	co = checkout
@@ -36,5 +38,6 @@
 	branches = branch --list -v
 	outgoing = log --branches --not --remotes=origin --oneline
 	purge-branches = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -d
+	tags = !git tag --list | sort --version-sort
 [include]
 	path = ~/.gitconfig-site
