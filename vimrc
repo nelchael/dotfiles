@@ -53,9 +53,9 @@ if has("gui_running")
 	set guioptions-=m
 	set mousemodel=popup
 	if has("win32") || has("win64")
-		set guifont=Consolas:h11
+		set guifont=Source_Code_Pro:h11
 	else
-		set guifont=Consolas\ 11
+		set guifont=Source\ Code\ Pro\ 11
 	endif
 	set belloff=all
 else
