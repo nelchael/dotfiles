@@ -150,13 +150,7 @@ if [[ "${OS}" = "Windows_NT" ]]; then
 	unset PAGER
 	unset LESS
 
-	alias python='winpty python'
 	alias gvim='start gvim'
-
-	fast_git_ps1() {
-		printf -- "$(git branch 2>/dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ (\1)/')"
-	}
-	PS1='\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\[\e[36m\]$(fast_git_ps1)\[\e[0m\]\$ '
 fi
 
 [[ -e ~/.bashrc-site ]] && source ~/.bashrc-site
