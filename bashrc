@@ -16,6 +16,9 @@ umask 0022
 # Interactive?
 [[ "${-}" == *i* ]] || return
 
+# Early setup:
+[[ -e ~/.bashrc-early ]] && source ~/.bashrc-early
+
 # Remove existing aliases:
 unalias -a
 
