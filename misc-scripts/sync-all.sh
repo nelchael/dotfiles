@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 options="$(getopt -o opbfvm -- "${@}")"
 if [[ "${?}" -ne 0 ]]; then

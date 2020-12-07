@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 APPLY_FILES="bashrc dir_colors gitconfig inputrc screenrc vimrc"
 
