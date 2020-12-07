@@ -109,16 +109,24 @@ case "${TERM}" in
 esac
 
 # Augument prompt with git information:
-if [[ -e "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
-	export GIT_PS1_SHOWDIRTYSTATE=yes
-	export GIT_PS1_SHOWUNTRACKEDFILES=yes
-	export GIT_PS1_SHOWSTASHSTATE=yes
-	export GIT_PS1_DESCRIBE_STYLE=branch
-	export GIT_PS1_SHOWCOLORHINTS=yes
-	export GIT_PS1_SHOWUPSTREAM="auto verbose"
-	source "/usr/share/git-core/contrib/completion/git-prompt.sh"
-	PROMPT_COMMAND="__git_ps1 '\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\[\e[0m\]' '\[\e[0m\]\$ '; ${PROMPT_COMMAND}"
-fi
+git_prompt_sh_possible_locations=(
+	"/usr/share/git-core/contrib/completion/git-prompt.sh"
+	"/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+	"/mingw64/share/git/completion/git-prompt.sh"
+)
+for git_prompt_sh_file in ${git_prompt_sh_possible_locations[*]}; do
+	if [[ -e "${git_prompt_sh_file}" ]]; then
+		export GIT_PS1_SHOWDIRTYSTATE=yes
+		export GIT_PS1_SHOWUNTRACKEDFILES=yes
+		export GIT_PS1_SHOWSTASHSTATE=yes
+		export GIT_PS1_DESCRIBE_STYLE=branch
+		export GIT_PS1_SHOWCOLORHINTS=yes
+		export GIT_PS1_SHOWUPSTREAM="auto verbose"
+		source "${git_prompt_sh_file}"
+		PROMPT_COMMAND="__git_ps1 '\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\[\e[0m\]' '\[\e[0m\]\$ '; ${PROMPT_COMMAND}"
+		break
+	fi
+done
 
 # Enable use of ccache
 if type -P ccache &> /dev/null; then
