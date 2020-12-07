@@ -164,4 +164,5 @@ if [[ "${OS}" = "Windows_NT" ]]; then
 	alias gvim='start gvim'
 fi
 
-[[ -e ~/.bashrc-site ]] && source ~/.bashrc-site
+# Late setup (a.k.a. fix-ups):
+[[ -e ~/.bashrc-late ]] && source ~/.bashrc-late
