@@ -149,6 +149,9 @@ let g:secure_modelines_verbose = 0
 " Configure enhanced Python syntax:
 let g:python_highlight_all = 1
 
+" vim-highlightedyank configuration:
+let g:highlightedyank_highlight_duration = -1
+
 " Configure lightline:
 " (statusline is configured above anyway for systems without lightline)
 let g:lightline = {
