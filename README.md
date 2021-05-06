@@ -18,6 +18,7 @@ In `.vim/pack/plugins/start` clone:
 * <https://github.com/itchyny/lightline.vim>
 * <https://github.com/itchyny/vim-gitbranch>
 * <https://github.com/machakann/vim-highlightedyank>
+* <https://github.com/mechatroner/rainbow_csv>
 * <https://github.com/mustache/vim-mustache-handlebars>
 * <https://github.com/natw/keyboard_cat.vim>
 * <https://github.com/rhysd/vim-syntax-codeowners>
