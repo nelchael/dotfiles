@@ -67,7 +67,7 @@ for directory in *; do
 	[[ "${option_offline}" = "yes" ]] || {
 		git -C "${directory}" gc --auto --quiet
 		git -C "${directory}" submodule --quiet foreach 'git gc --auto --quiet'
-		(git -C "${directory}" pull --rebase || git -C "${directory}" status) 2>&1 | "${SED}" -re '/^Current branch .+ is up to date/d; /^Fetching submodule/d'
+		(git -C "${directory}" pull --rebase || git -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
 
 		echo -ne "\e[31m"
 		git -C "${directory}" branches | grep '\[gone\]'
