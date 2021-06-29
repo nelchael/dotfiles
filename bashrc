@@ -44,9 +44,10 @@ alias rm='rm -iv'
 alias s='cd ..'
 alias rsync='rsync --progress --human-readable'
 
-# Enable color for grep:
+# Enable color for grep and set up ripgrep configuration:
 export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
 alias grep='grep --color=auto'
+export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 # `ls' colors:
 if type -P dircolors &> /dev/null; then
