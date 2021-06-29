@@ -52,8 +52,10 @@ for directory in *; do
 
 	if [[ "${option_hide_branches}" != "yes" ]]; then
 		branch_info="$(git -C "${directory}" branch --show-current)"
-		if [[ "${branch_info}" = "master" || "${branch_info}" = "main" ]]; then
+		if [[ "${branch_info}" = "main" ]]; then
 			branch_info=""
+		elif [[ "${branch_info}" = "master" ]]; then
+			branch_info="\e[2m@\e[0m\e[91m${branch_info}\e[0m"
 		else
 			branch_info="\e[2m@\e[0m\e[92m${branch_info}\e[0m"
 		fi
