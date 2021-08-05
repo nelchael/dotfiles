@@ -17,6 +17,7 @@ In `.vim/pack/plugins/start` clone:
 * <https://github.com/hashivim/vim-terraform>
 * <https://github.com/itchyny/lightline.vim>
 * <https://github.com/itchyny/vim-gitbranch>
+* <https://github.com/lepture/vim-jinja>
 * <https://github.com/machakann/vim-highlightedyank>
 * <https://github.com/mechatroner/rainbow_csv>
 * <https://github.com/mustache/vim-mustache-handlebars>
