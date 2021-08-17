@@ -61,6 +61,10 @@ for directory in *; do
 		else
 			branch_info="\e[2m@\e[0m\e[92m${branch_info}\e[0m"
 		fi
+		ahead="$(git ${GIT_OPTIONS} -C "${directory}" rev-list @{upstream}..HEAD --count)"
+		behind="$(git ${GIT_OPTIONS} -C "${directory}" rev-list HEAD..@{upstream} --count)"
+		[[ "${ahead}" != "" && "${ahead}" != "0" ]] && branch_info="${branch_info}\e[96m+${ahead}\e[0m"
+		[[ "${behind}" != "" && "${behind}" != "0" ]] && branch_info="${branch_info}\e[96m-${behind}\e[0m"
 	fi
 	echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m${branch_info} \e[2m$(git ${GIT_OPTIONS} -C "${directory}" remote get-url origin 2> /dev/null || echo 'no remote origin')\e[0m"
 
