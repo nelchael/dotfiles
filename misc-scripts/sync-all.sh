@@ -44,6 +44,8 @@ SED="$(which sed)"
 	exit 1
 }
 
+GIT_OPTIONS="-c core.useBuiltinFSMonitor=false"
+
 for directory in *; do
 	[[ -d "${directory}/.git" ]] || {
 		[[ "${option_verbose}" = "yes" ]] && echo -e " \e[1;91m❯\e[0m \e[1m${directory}\e[0m - \e[31mskipped\e[0m";
@@ -51,7 +53,7 @@ for directory in *; do
 	}
 
 	if [[ "${option_hide_branches}" != "yes" ]]; then
-		branch_info="$(git -C "${directory}" branch --show-current)"
+		branch_info="$(git ${GIT_OPTIONS} -C "${directory}" branch --show-current)"
 		if [[ "${branch_info}" = "main" ]]; then
 			branch_info=""
 		elif [[ "${branch_info}" = "master" ]]; then
@@ -60,28 +62,28 @@ for directory in *; do
 			branch_info="\e[2m@\e[0m\e[92m${branch_info}\e[0m"
 		fi
 	fi
-	echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m${branch_info} \e[2m$(git -C "${directory}" remote get-url origin 2> /dev/null || echo 'no remote origin')\e[0m"
+	echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m${branch_info} \e[2m$(git ${GIT_OPTIONS} -C "${directory}" remote get-url origin 2> /dev/null || echo 'no remote origin')\e[0m"
 
 	[[ "${option_force_master}" = "yes" ]] && {
-		git -C "${directory}" checkout master --quiet
+		git ${GIT_OPTIONS} -C "${directory}" checkout master --quiet
 	}
 
 	[[ "${option_offline}" = "yes" ]] || {
-		git -C "${directory}" gc --auto --quiet
-		git -C "${directory}" submodule --quiet foreach 'git gc --auto --quiet'
-		(git -C "${directory}" pull --rebase || git -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
+		git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet
+		git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet'
+		(git ${GIT_OPTIONS} -C "${directory}" pull --rebase || git ${GIT_OPTIONS} -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Already up to date./d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
 
 		echo -ne "\e[31m"
-		git -C "${directory}" branches | grep '\[gone\]'
+		git ${GIT_OPTIONS} -C "${directory}" branches | grep '\[gone\]'
 		echo -ne "\e[0m"
 	}
 
 	[[ "${option_force_gcp}" = "yes" ]] && {
-		git -C "${directory}" gc --prune=all --quiet
-		git -C "${directory}" submodule --quiet foreach 'git gc --prune=all --quiet'
+		git ${GIT_OPTIONS} -C "${directory}" gc --prune=all --quiet
+		git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet'
 	}
 
 	[[ "${option_force_purge}" = "yes" ]] && {
-		git -C "${directory}" purge-branches
+		git ${GIT_OPTIONS} -C "${directory}" purge-branches
 	}
 done
