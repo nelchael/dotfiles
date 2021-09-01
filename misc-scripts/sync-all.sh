@@ -61,8 +61,8 @@ for directory in *; do
 		else
 			branch_info="\e[2m@\e[0m\e[92m${branch_info}\e[0m"
 		fi
-		ahead="$(git ${GIT_OPTIONS} -C "${directory}" rev-list @{upstream}..HEAD --count)"
-		behind="$(git ${GIT_OPTIONS} -C "${directory}" rev-list HEAD..@{upstream} --count)"
+		ahead="$(git ${GIT_OPTIONS} -C "${directory}" rev-list @{upstream}..HEAD --count 2> /dev/null)"
+		behind="$(git ${GIT_OPTIONS} -C "${directory}" rev-list HEAD..@{upstream} --count 2> /dev/null)"
 		[[ "${ahead}" != "" && "${ahead}" != "0" ]] && branch_info="${branch_info}\e[96m+${ahead}\e[0m"
 		[[ "${behind}" != "" && "${behind}" != "0" ]] && branch_info="${branch_info}\e[96m-${behind}\e[0m"
 	fi
