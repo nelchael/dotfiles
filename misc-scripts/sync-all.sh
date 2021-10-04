@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-options="$(getopt -o opbfvm -- "${@}")"
+options="$(getopt -o opbfv -- "${@}")"
 if [[ "${?}" -ne 0 ]]; then
 	exit 1
 fi
@@ -21,9 +21,6 @@ while :; do
 			;;
 		-v)
 			declare -r option_verbose=yes
-			;;
-		-m)
-			declare -r option_force_master=yes
 			;;
 		--)
 			shift
@@ -67,10 +64,6 @@ for directory in *; do
 		[[ "${behind}" != "" && "${behind}" != "0" ]] && branch_info="${branch_info}\e[96m-${behind}\e[0m"
 	fi
 	echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m${branch_info} \e[2m$(git ${GIT_OPTIONS} -C "${directory}" remote get-url origin 2> /dev/null || echo 'no remote origin')\e[0m"
-
-	[[ "${option_force_master}" = "yes" ]] && {
-		git ${GIT_OPTIONS} -C "${directory}" checkout master --quiet
-	}
 
 	[[ "${option_offline}" = "yes" ]] || {
 		git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet
