@@ -65,22 +65,27 @@ for directory in *; do
 	fi
 	echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m${branch_info} \e[2m$(git ${GIT_OPTIONS} -C "${directory}" remote get-url origin 2> /dev/null || echo 'no remote origin')\e[0m"
 
-	[[ "${option_offline}" = "yes" ]] || {
-		git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet
-		git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet'
-		(git ${GIT_OPTIONS} -C "${directory}" pull --rebase || git ${GIT_OPTIONS} -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Already up to date./d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
+	if [[ -n "$(git ${GIT_OPTIONS} -C "${directory}" remote show)" ]]; then
+		[[ "${option_offline}" = "yes" ]] || {
+			(git ${GIT_OPTIONS} -C "${directory}" pull --rebase || git ${GIT_OPTIONS} -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Already up to date./d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
 
-		echo -ne "\e[31m"
-		git ${GIT_OPTIONS} -C "${directory}" branches | grep '\[gone\]'
-		echo -ne "\e[0m"
-	}
+			echo -ne "\e[31m"
+			git ${GIT_OPTIONS} -C "${directory}" branches | grep '\[gone\]'
+			echo -ne "\e[0m"
+		}
 
-	[[ "${option_force_gcp}" = "yes" ]] && {
+		[[ "${option_force_purge}" = "yes" ]] && {
+			git ${GIT_OPTIONS} -C "${directory}" purge-branches
+		}
+	else
+		[[ "${option_verbose}" = "yes" ]] && echo -e " \e[1;91m❯\e[0m \e[1m${directory}\e[0m - \e[31mno remotes, skippied pull\e[0m";
+	fi
+
+	if [[ "${option_force_gcp}" = "yes" ]]; then
 		git ${GIT_OPTIONS} -C "${directory}" gc --prune=all --quiet
 		git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet'
-	}
-
-	[[ "${option_force_purge}" = "yes" ]] && {
-		git ${GIT_OPTIONS} -C "${directory}" purge-branches
-	}
+	else
+		git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet
+		git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet'
+	fi
 done
