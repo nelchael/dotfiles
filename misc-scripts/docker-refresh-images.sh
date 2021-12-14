@@ -11,8 +11,9 @@ for img in $(docker image ls | "${SED}" 1d | sort | awk '{ print $1 ":" $2 }'); 
 	[[ "${img}" = *":<none>" ]] && continue
 	repo_digest="$(docker inspect "${img}" | jq -r '.[].RepoDigests[0]')"
 	if [[ "${repo_digest}" != "null" ]]; then
-		docker image pull -q "${img}"
+		echo -e " \e[92m>>>\e[0m Pulling \e[94m${img}\e[0m"
+		docker image pull "${img}"
 	else
-		echo "Skipping ${img} - no repository digest"
+		echo -e " \e[91m>>>\e[0m Skipping \e[94m${img}\e[0m - no repository digest"
 	fi
 done
