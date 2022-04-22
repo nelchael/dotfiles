@@ -43,6 +43,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias s='cd ..'
 alias rsync='rsync --progress --human-readable'
+alias diff='diff --color=auto'
 
 # Enable color for grep and set up ripgrep configuration:
 export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
