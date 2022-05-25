@@ -32,6 +32,7 @@ set viminfo=h,'500,f1,:500,/500,s250,<500,n$HOME/.viminfo
 set whichwrap+=<,>,[,]
 set wildignore=*.o,*~,*.la,*.*lo*,*.aux,*.d,*.pyc,*.pyo
 set wildmenu
+set wildmode=list:longest
 set winminheight=0
 set nofsync
 set autowrite
