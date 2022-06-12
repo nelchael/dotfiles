@@ -37,7 +37,7 @@
 	ci = commit
 	branches = branch --list -v
 	outgoing = log --branches --not --remotes=origin --oneline
-	purge-branches = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -d
+	purge-branches = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -D
 	tags = !git tag --list | sort --version-sort
 	sync-all = !sync-all.sh
 [include]
