@@ -76,7 +76,7 @@ ulimit -c hard
 export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}:/sbin:/usr/sbin"
 
 # Nice less behavior:
-export LESS='-R -M -x4 -F'
+export LESS="-R -M -x4 -F"
 export LESSCOLOR=yes
 export PAGER="$(which less)"
 export EDITOR="$(which vim)"
@@ -161,7 +161,6 @@ fi
 # Windows MSYS Git bash tweaks:
 if [[ "${OS}" = "Windows_NT" ]]; then
 	unset PAGER
-	unset LESS
 
 	alias gvim='start gvim'
 fi
