@@ -31,6 +31,8 @@
 	autoDetach = false
 [stash]
 	showPatch = true
+[init]
+	defaultBranch = main
 [alias]
 	st = status --short
 	co = checkout
