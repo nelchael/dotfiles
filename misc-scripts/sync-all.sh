@@ -51,8 +51,8 @@ for directory in *; do
 			branch_info=""
 		elif [[ "${branch_info}" = "master" ]]; then
 			branch_info="\e[2m@\e[0m\e[91m${branch_info}\e[0m"
-			git ${GIT_OPTIONS} -C "${directory}" show-branch origin/main 2> /dev/null && {
-				branch_info="${branch_info} \e[90m(origin/main available)\e[0m"
+			git ${GIT_OPTIONS} -C "${directory}" show-branch origin/main &> /dev/null && {
+				branch_info="${branch_info} \e[93m(origin/main available)\e[0m"
 			}
 		else
 			branch_info="\e[2m@\e[0m\e[92m${branch_info}\e[0m"
