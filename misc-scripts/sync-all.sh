@@ -46,16 +46,19 @@ for directory in *; do
 	}
 
 	if [[ "${option_hide_branches}" != "yes" ]]; then
+		default_branch="$(git ${GIT_OPTIONS} -C "${directory}" branch --remotes --list "*/HEAD" | awk -F / '{print $NF}')"
 		branch_info="$(git ${GIT_OPTIONS} -C "${directory}" branch --show-current)"
 		if [[ "${branch_info}" = "main" ]]; then
-			branch_info=""
+			branch_info=""  # On default "main" branch
 		elif [[ "${branch_info}" = "master" ]]; then
-			branch_info="\e[2m@\e[0m\e[91m${branch_info}\e[0m"
+			branch_info=" \e[91m${branch_info}\e[0m"
 			git ${GIT_OPTIONS} -C "${directory}" show-branch origin/main &> /dev/null && {
 				branch_info="${branch_info} \e[93m(origin/main available)\e[0m"
 			}
+		elif [[ "${branch_info}" = "${default_branch}" ]]; then
+			branch_info=""  # On default branch
 		else
-			branch_info="\e[2m@\e[0m\e[92m${branch_info}\e[0m"
+			branch_info=" \e[92m${branch_info}\e[0m"
 		fi
 		[[ "${option_offline}" = "yes" ]] || {
 			ahead="$(git ${GIT_OPTIONS} -C "${directory}" rev-list @{upstream}..HEAD --count 2> /dev/null)"
