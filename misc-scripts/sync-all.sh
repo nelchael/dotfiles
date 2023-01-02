@@ -46,7 +46,6 @@ for directory in *; do
 	}
 
 	if [[ "${option_hide_branches}" != "yes" ]]; then
-		default_branch="$(git ${GIT_OPTIONS} -C "${directory}" branch --remotes --list "*/HEAD" | awk -F / '{print $NF}')"
 		branch_info="$(git ${GIT_OPTIONS} -C "${directory}" branch --show-current)"
 		if [[ "${branch_info}" = "main" ]]; then
 			branch_info=""  # On default "main" branch
@@ -55,7 +54,7 @@ for directory in *; do
 			git ${GIT_OPTIONS} -C "${directory}" show-branch origin/main &> /dev/null && {
 				branch_info="${branch_info} \e[93m(origin/main available)\e[0m"
 			}
-		elif [[ "${branch_info}" = "${default_branch}" ]]; then
+		elif [[ "${branch_info}" = "$(git ${GIT_OPTIONS} -C "${directory}" branch --remotes --list '*/HEAD' | awk -F / '{print $NF}')" ]]; then
 			branch_info=""  # On default branch
 		else
 			branch_info=" \e[92m${branch_info}\e[0m"
