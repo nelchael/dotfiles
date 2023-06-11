@@ -46,6 +46,7 @@ set nomodeline
 set debug=beep
 set spellsuggest=best,10
 set noshowmode
+set novisualbell
 
 " Tweak some settings if we have GUI running:
 if has("gui_running")
