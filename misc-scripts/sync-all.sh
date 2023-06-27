@@ -11,7 +11,7 @@ while :; do
 			declare -r option_offline=yes
 			;;
 		-f)
-			declare -r option_run_gc_pruge_all=yes
+			declare -r option_run_gc_purge_all=yes
 			;;
 		-b)
 			declare -r option_hide_branches=yes
@@ -81,13 +81,13 @@ for directory in *; do
 			git ${GIT_OPTIONS} -C "${directory}" purge-branches
 		}
 
-		if [[ "${option_run_gc_pruge_all}" != "yes" ]]; then
+		if [[ "${option_run_gc_purge_all}" != "yes" ]]; then
 			git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet
 			git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet'
 		fi
 	fi
 
-	if [[ "${option_run_gc_pruge_all}" = "yes" ]]; then
+	if [[ "${option_run_gc_purge_all}" = "yes" ]]; then
 		git ${GIT_OPTIONS} -C "${directory}" gc --prune=all --quiet
 		git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet'
 	fi
