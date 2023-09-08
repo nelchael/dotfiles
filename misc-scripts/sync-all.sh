@@ -68,6 +68,7 @@ for directory in *; do
 	fi
 	repo_status=""
 	[[ -n "$(git ${GIT_OPTIONS} -C "${directory}" status --porcelain=1 --untracked-files=no)" ]] && { repo_status="\e[30;43m(dirty)\e[0m "; }
+	[[ -n "$(git ${GIT_OPTIONS} -C "${directory}" stash list)" ]] && { repo_status="${repo_status}\e[94m(stashed)\e[0m "; }
 	echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m${branch_info} ${repo_status}\e[2m$(git ${GIT_OPTIONS} -C "${directory}" remote get-url origin 2> /dev/null || echo 'no remote origin')\e[0m"
 
 	if [[ "${option_offline}" != "yes" && -n "$(git ${GIT_OPTIONS} -C "${directory}" remote show)" ]]; then
