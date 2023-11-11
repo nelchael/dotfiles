@@ -101,14 +101,7 @@ export PROMPT_DIRTRIM=2
 PS1='\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\$ '
 
 # Set terminal title using PROMPT_COMMAND:
-case "${TERM}" in
-	xterm*|rxvt|Eterm|eterm)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
-		;;
-	screen)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\033\\"'
-		;;
-esac
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
 
 # Augument prompt with git information:
 git_prompt_sh_possible_locations=(

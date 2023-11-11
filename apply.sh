@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPLY_FILES="bashrc dir_colors gitconfig inputrc ripgreprc screenrc vimrc"
+APPLY_FILES="bashrc dir_colors gitconfig inputrc ripgreprc vimrc"
 
 for i in ${APPLY_FILES}; do
 	[[ -z "$(diff -Nu "${i}" "${HOME}/.${i}")" ]] && continue
