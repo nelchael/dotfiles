@@ -96,12 +96,13 @@ export XMLLINT_INDENT="	"
 # Ignore CVS and .svn directories:
 export FIGNORE=CVS:.svn
 
-# Default PS1:
-export PROMPT_DIRTRIM=2
-PS1='\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\$ '
+function _brc_prompt_prefix() { echo '\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]'; }
+function _brc_prompt_suffix() { if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -ne "\e[31m"; else echo -ne "\e[90m"; fi; echo '\$\e[0m '; }
+function _brc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
 
-# Set terminal title using PROMPT_COMMAND:
-PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"'
+# Default prompt and terminal title using PROMPT_COMMAND:
+PROMPT_DIRTRIM=2
+PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; PS1="$(_brc_prompt_prefix) $(_brc_prompt_suffix "${__r}")";'
 
 # Augument prompt with git information:
 git_prompt_sh_possible_locations=(
@@ -118,7 +119,7 @@ for git_prompt_sh_file in ${git_prompt_sh_possible_locations[*]}; do
 		export GIT_PS1_SHOWCOLORHINTS=yes
 		export GIT_PS1_SHOWUPSTREAM="auto verbose"
 		source "${git_prompt_sh_file}"
-		PROMPT_COMMAND="__git_ps1 '\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]\[\e[0m\]' '\[\e[0m\]\$ '; ${PROMPT_COMMAND}"
+		PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; __git_ps1 "$(_brc_prompt_prefix) " "$(_brc_prompt_suffix "${__r}")" "(%s) ";'
 		break
 	fi
 done
