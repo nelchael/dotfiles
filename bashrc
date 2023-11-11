@@ -52,7 +52,7 @@ export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 # `ls' colors:
 if type -P dircolors &> /dev/null; then
-	tmp_colors_file="$(mktemp tmp_colors_fileXXXXXXXX)"
+	tmp_colors_file="$(mktemp -t tmp_colors_fileXXXXXXXX)"
 	[[ -f /etc/DIR_COLORS ]] && cat /etc/DIR_COLORS >> "${tmp_colors_file}"
 	[[ -f ~/.dir_colors ]] && cat ~/.dir_colors >> "${tmp_colors_file}"
 	eval $(dircolors -b "${tmp_colors_file}")
