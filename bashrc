@@ -17,7 +17,7 @@ umask 0022
 [[ "${-}" == *i* ]] || return
 
 # Early setup:
-[[ -e ~/.bashrc-early ]] && source ~/.bashrc-early
+if [[ -e ~/.bashrc-early ]]; then source ~/.bashrc-early; fi
 
 # Remove existing aliases:
 unalias -a
@@ -160,4 +160,4 @@ if [[ "${OS}" = "Windows_NT" ]]; then
 fi
 
 # Late setup (a.k.a. fix-ups):
-[[ -e ~/.bashrc-late ]] && source ~/.bashrc-late
+if [[ -e ~/.bashrc-late ]]; then source ~/.bashrc-late; fi
