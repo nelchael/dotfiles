@@ -102,7 +102,7 @@ function _brc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HO
 
 # Default prompt and terminal title using PROMPT_COMMAND:
 PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; PS1="$(_brc_prompt_prefix) $(_brc_prompt_suffix "${__r}")";'
+PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; PS1="$(_brc_prompt_prefix) $(_brc_prompt_suffix "${__r}")"'
 
 # Augument prompt with git information:
 git_prompt_sh_possible_locations=(
@@ -119,7 +119,7 @@ for git_prompt_sh_file in ${git_prompt_sh_possible_locations[*]}; do
 		export GIT_PS1_SHOWCOLORHINTS=yes
 		export GIT_PS1_SHOWUPSTREAM="auto verbose"
 		source "${git_prompt_sh_file}"
-		PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; __git_ps1 "$(_brc_prompt_prefix) " "$(_brc_prompt_suffix "${__r}")" "(%s) ";'
+		PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; __git_ps1 "$(_brc_prompt_prefix) " "$(_brc_prompt_suffix "${__r}")" "(%s) "'
 		break
 	fi
 done
@@ -149,7 +149,7 @@ if type -P hstr &> /dev/null; then
 	export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
 	export HSTR_PROMPT='> '
 	bind '"\C-r": "\C-ahstr -- \C-j"'
-	export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+	PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
 fi
 
 # Windows MSYS Git bash tweaks:
