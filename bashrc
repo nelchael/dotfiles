@@ -97,7 +97,7 @@ export XMLLINT_INDENT="	"
 export FIGNORE=CVS:.svn
 
 function _brc_prompt_prefix() { echo '\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]'; }
-function _brc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -ne "\e[35m${VIRTUAL_ENV_PROMPT}\e[0m"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -ne "\e[31m"; else echo -ne "\e[90m"; fi; echo '\$\e[0m '; }
+function _brc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\e[35m${VIRTUAL_ENV_PROMPT}\e[0m"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\e[31m'; else echo -n '\e[90m'; fi; echo -n '\$\e[0m '; }
 function _brc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
 
 # Default prompt and terminal title using PROMPT_COMMAND:
