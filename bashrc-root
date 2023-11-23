@@ -36,7 +36,13 @@ alias diff='diff --color=auto'
 export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
 alias grep='grep --color=auto'
 
-[[ -f /etc/DIR_COLORS ]] && eval $(dircolors -b /etc/DIR_COLORS)
+# `ls' colors:
+if type -P dircolors &> /dev/null; then
+	eval "$(dircolors -b)"
+	for ext in conf diff html ini log patch properties toml txt xml xsl; do
+		export LS_COLORS="${LS_COLORS}*.${ext}=00;33:"
+	done
+fi
 
 # Enable coredumps:
 ulimit -c hard
