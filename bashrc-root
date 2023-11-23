@@ -5,8 +5,8 @@
 # Interactive?
 [[ "${-}" == *i* ]] || return
 
-[[ -f /etc/DIR_COLORS ]] && eval $(dircolors -b /etc/DIR_COLORS)
 
+# Remove existing aliases:
 unalias -a
 
 # Various `ls' flavors:
@@ -30,16 +30,26 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias s='cd ..'
 alias rsync='rsync --progress --human-readable'
+alias diff='diff --color=auto'
 
 # Enable color for grep:
 export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
 alias grep='grep --color=auto'
 
-# Add ~/bin to PATH:
-export PATH=/root/bin:$PATH
+[[ -f /etc/DIR_COLORS ]] && eval $(dircolors -b /etc/DIR_COLORS)
+
+# Enable coredumps:
+ulimit -c hard
+
+# Enable bash completion:
+[[ -f /etc/bash_completion ]] && source /etc/bash_completion
+
+
+# Add ~/.local/bin, ~/.bin to PATH:
+export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}"
 
 # Nice less behavior:
-export LESS='-R -M -x4 -F'
+export LESS="-R -M -x4 -F"
 export LESSCOLOR=yes
 export PAGER="$(which less)"
 export EDITOR="$(which vim)"
@@ -53,16 +63,14 @@ export HISTIGNORE='l:ls:sl:ll:lla:lss:lls:s:bg:fg:j:history:hstr --*'
 shopt -s histappend
 shopt -s cmdhist
 
-# Enable bash completion:
-[[ -f /etc/bash_completion ]] && source /etc/bash_completion
 
-function _brc_prompt_prefix() { echo '\[\e[31m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]'; }
-function _brc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -ne "\e[35m${VIRTUAL_ENV_PROMPT}\e[0m"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -ne "\e[31m"; else echo -ne "\e[90m"; fi; echo '\$\e[0m '; }
-function _brc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
+function _bashrc_prompt_prefix() { if [[ "${EUID}" == 0 ]]; then echo -n '\[\e[31m\]\u@\h\[\e[0m\]'; else echo -n '\[\e[33m\]\u@\h\[\e[0m\]'; fi; echo -n ' \[\e[94m\]\w\[\e[0m\]'; }
+function _bashrc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\[\e[35m\]${VIRTUAL_ENV_PROMPT}\[\e[0m\]"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\[\e[31m\]'; else echo -n '\[\e[90m\]'; fi; echo -n '\$\[\e[0m\] '; }
+function _bashrc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
 
 # Default prompt and terminal title using PROMPT_COMMAND:
 PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; PS1="$(_brc_prompt_prefix) $(_brc_prompt_suffix "${__r}")";'
+PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; PS1="$(_bashrc_prompt_prefix) $(_bashrc_prompt_suffix "${__r}")"'
 
 bind -x '"\C-\M-R": /usr/bin/reset'
 
@@ -71,7 +79,5 @@ if type -P hstr &> /dev/null; then
 	export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
 	export HSTR_PROMPT='> '
 	bind '"\C-r": "\C-ahstr -- \C-j"'
-	export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+	PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
 fi
-
-export PGUSER=postgres

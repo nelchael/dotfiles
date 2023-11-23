@@ -1,6 +1,6 @@
 # vim: set ft=bash
 # profile:
-[[ -z "${MSYSTEM}" && -f /etc/profile ]] && source /etc/profile
+[[ -f /etc/profile ]] && source /etc/profile
 
 # Encoding vars:
 export G_FILENAME_ENCODING=UTF-8
@@ -72,8 +72,8 @@ ulimit -c hard
 	done
 }
 
-# Add ~/bin, /sbin, /usr/sbin to PATH:
-export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}:/sbin:/usr/sbin"
+# Add ~/.local/bin, ~/.bin to PATH:
+export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}"
 
 # Nice less behavior:
 export LESS="-R -M -x4 -F"
@@ -93,16 +93,13 @@ shopt -s cmdhist
 # For xmllint --format:
 export XMLLINT_INDENT="	"
 
-# Ignore CVS and .svn directories:
-export FIGNORE=CVS:.svn
-
-function _brc_prompt_prefix() { echo '\[\e[33m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]'; }
-function _brc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\e[35m${VIRTUAL_ENV_PROMPT}\e[0m"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\e[31m'; else echo -n '\e[90m'; fi; echo -n '\$\e[0m '; }
-function _brc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
+function _bashrc_prompt_prefix() { if [[ "${EUID}" == 0 ]]; then echo -n '\[\e[31m\]\u@\h\[\e[0m\]'; else echo -n '\[\e[33m\]\u@\h\[\e[0m\]'; fi; echo -n ' \[\e[94m\]\w\[\e[0m\]'; }
+function _bashrc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\[\e[35m\]${VIRTUAL_ENV_PROMPT}\[\e[0m\]"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\[\e[31m\]'; else echo -n '\[\e[90m\]'; fi; echo -n '\$\[\e[0m\] '; }
+function _bashrc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
 
 # Default prompt and terminal title using PROMPT_COMMAND:
 PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; PS1="$(_brc_prompt_prefix) $(_brc_prompt_suffix "${__r}")"'
+PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; PS1="$(_bashrc_prompt_prefix) $(_bashrc_prompt_suffix "${__r}")"'
 
 # Augument prompt with git information:
 git_prompt_sh_possible_locations=(
@@ -119,7 +116,7 @@ for git_prompt_sh_file in ${git_prompt_sh_possible_locations[*]}; do
 		export GIT_PS1_SHOWCOLORHINTS=yes
 		export GIT_PS1_SHOWUPSTREAM="auto verbose"
 		source "${git_prompt_sh_file}"
-		PROMPT_COMMAND='__r="${?}"; _brc_terminal_title; __git_ps1 "$(_brc_prompt_prefix) " "$(_brc_prompt_suffix "${__r}")" "(%s) "'
+		PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; __git_ps1 "$(_bashrc_prompt_prefix) " "$(_bashrc_prompt_suffix "${__r}")" "(%s) "'
 		break
 	fi
 done
