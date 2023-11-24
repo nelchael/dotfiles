@@ -5,7 +5,6 @@
 # Interactive?
 [[ "${-}" == *i* ]] || return
 
-
 # Remove existing aliases:
 unalias -a
 
