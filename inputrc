@@ -1,3 +1,0 @@
-# Missing from some systems: konsole (alt + arrow key)
-"\e[1;3C": forward-word
-"\e[1;3D": backward-word

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPLY_FILES="bashrc gitconfig inputrc ripgreprc vimrc"
+APPLY_FILES="bashrc gitconfig ripgreprc vimrc"
 
 for i in ${APPLY_FILES}; do
 	[[ -z "$(diff -Nu "${i}" "${HOME}/.${i}")" ]] && continue
