@@ -51,9 +51,9 @@ alias grep='grep --color=auto'
 export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 # `ls' colors:
-if type -P dircolors &> /dev/null; then
+if type -t dircolors &> /dev/null; then
 	eval "$(dircolors -b)"
-	for ext in conf diff html ini log patch properties toml txt xml xsl; do
+	for ext in conf diff html ini json log md patch properties toml txt xml xsl yaml yml; do
 		export LS_COLORS="${LS_COLORS}*.${ext}=00;33:"
 	done
 fi
