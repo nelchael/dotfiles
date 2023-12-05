@@ -16,11 +16,11 @@ umask 0022
 # Interactive?
 [[ "${-}" == *i* ]] || return
 
-# Early setup:
-if [[ -e ~/.bashrc-early ]]; then source ~/.bashrc-early; fi
-
 # Remove existing aliases:
 unalias -a
+
+# Early setup:
+if [[ -e ~/.bashrc-early ]]; then source ~/.bashrc-early; fi
 
 # Various `ls' flavors:
 alias l='ls -sh --color=yes'
