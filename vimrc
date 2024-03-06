@@ -117,6 +117,7 @@ au BufNewFile,BufRead *.vm setlocal filetype=html
 au BufNewFile,BufRead */Pipfile.lock setlocal filetype=json
 au BufNewFile,BufRead */Pipfile setlocal filetype=toml
 au BufNewFile,BufRead *.toml setlocal filetype=toml
+au BufNewFile,BufRead */poetry.lock setlocal filetype=toml
 au BufNewFile,BufRead *.tf setlocal filetype=terraform expandtab
 
 " File type dependant settings:
