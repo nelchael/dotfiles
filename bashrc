@@ -35,17 +35,6 @@ alias lla='ls -lash --color=yes'
 alias lss='ls -shS --color=yes'
 alias lls='ls -lshS --color=yes'
 
-if [[ "${__OS}" == "Darwin" ]]; then
-    alias l='gls -sh --color=yes'
-    alias ls='gls -sh --color=yes'
-    alias sl='gls -sh --color=yes'
-    alias la='gls -ash --color=yes'
-    alias ll='gls -lsh --color=yes'
-    alias lla='gls -lash --color=yes'
-    alias lss='gls -shS --color=yes'
-    alias lls='gls -lshS --color=yes'
-fi
-
 # Other aliases:
 alias cp='cp -Rvi'
 alias df='df -hP'
@@ -57,8 +46,27 @@ alias s='cd ..'
 alias rsync='rsync --progress --human-readable'
 alias diff='diff --color=auto'
 
+# MacOS specific tweaks:
+
 if [[ "${__OS}" == "Darwin" ]]; then
-    alias rm='grm -iv'
+    if type -P gls &> /dev/null; then
+        alias l='gls -sh --color=yes'
+        alias ls='gls -sh --color=yes'
+        alias sl='gls -sh --color=yes'
+        alias la='gls -ash --color=yes'
+        alias ll='gls -lsh --color=yes'
+        alias lla='gls -lash --color=yes'
+        alias lss='gls -shS --color=yes'
+        alias lls='gls -lshS --color=yes'
+    fi
+
+    if type -P grm &> /dev/null; then
+        alias rm='grm -iv'
+    fi
+
+    if type -P gdircolors &> /dev/null; then
+        alias dircolors=gdircolors
+    fi
 fi
 
 # Enable color for grep and set up ripgrep configuration:
@@ -67,9 +75,6 @@ alias grep='grep --color=auto'
 export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 # `ls' colors:
-if [[ "${__OS}" == "Darwin" ]]; then
-    alias dircolors=gdircolors
-fi
 if type -t dircolors &> /dev/null; then
     eval "$(dircolors -b)"
     for ext in conf diff html ini json log md patch properties toml txt xml xsl yaml yml; do
