@@ -19,8 +19,6 @@ alias lss='ls -shS --color=yes'
 alias lls='ls -lshS --color=yes'
 
 # Other aliases:
-alias cal='cal -m'
-alias caly='cal -y -m'
 alias cp='cp -Rvi'
 alias df='df -hP'
 alias du='du -sh'
