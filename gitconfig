@@ -1,47 +1,55 @@
 ; vim: set ft=gitconfig
 
 [user]
-	email = krzysiek.pawlik@people.pl
-	name = Krzysztof Pawlik
+    email = krzysiek.pawlik@people.pl
+    name = Krzysztof Pawlik
+[core]
+    abbrev = 8
 [push]
-	default = simple
+    default = simple
+[pull]
+    rebase = true
 [color]
-	diff = auto
-	status = auto
+    diff = auto
+    status = auto
 [diff]
-	mnemonicprefix = yes
-	renames = true
+    mnemonicprefix = yes
+    renames = true
 [log]
-	decorate = auto
+    decorate = auto
 [rebase]
-	stat = true
-	autoStash = true
+    stat = true
+    autoStash = true
 [status]
-	short = false
-	branch = true
-	showUntrackedFiles = normal
+    short = false
+    branch = true
+    showUntrackedFiles = normal
 [fetch]
-	prune = true
-	recurseSubmodules = on-demand
+    prune = true
+    recurseSubmodules = on-demand
 [submodule]
-	recurse = true
+    recurse = true
 [gc]
-	auto = 1536
-	autoPackLimit = 32
-	autoDetach = false
+    auto = 1536
+    autoPackLimit = 32
+    autoDetach = false
 [stash]
-	showPatch = true
+    showPatch = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [alias]
-	st = status --short
-	co = checkout
-	ci = commit
-	branches = branch --list -v
-	outgoing = log --branches --not --remotes=origin --oneline
-	purge-branches = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -D
-	tags = !git tag --list | sort --version-sort
-	show-branches = show-branch --current heads/*
-	sync-all = !sync-all.sh
+    st = status --short
+    co = checkout
+    ci = commit
+    branches = branch --list -v
+    outgoing = log --branches --not --remotes=origin --oneline
+    purge-branches = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -D
+    tags = !git tag --list | sort --version-sort
+    show-branches = show-branch --current heads/*
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [include]
-	path = ~/.gitconfig-site
+    path = ~/.gitconfig-site
