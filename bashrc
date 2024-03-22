@@ -91,7 +91,7 @@ shopt -s histappend
 shopt -s cmdhist
 
 # For xmllint --format:
-export XMLLINT_INDENT="	"
+export XMLLINT_INDENT="  "
 
 function _bashrc_prompt_prefix() { if [[ "${EUID}" == 0 ]]; then echo -n '\[\e[31m\]\u@\h\[\e[0m\]'; else echo -n '\[\e[33m\]\u@\h\[\e[0m\]'; fi; echo -n ' \[\e[94m\]\w\[\e[0m\]'; }
 function _bashrc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\[\e[35m\]${VIRTUAL_ENV_PROMPT}\[\e[0m\]"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\[\e[31m\]'; else echo -n '\[\e[90m\]'; fi; echo -n '\$\[\e[0m\] '; }
