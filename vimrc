@@ -48,6 +48,7 @@ set debug=beep
 set spellsuggest=best,10
 set noshowmode
 set novisualbell
+set synmaxcol=480
 
 " Tweak some settings if we have GUI running:
 if has("gui_running")
