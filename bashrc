@@ -165,6 +165,14 @@ if type -P hstr &> /dev/null; then
     PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
 fi
 
+if type -P aws &> /dev/null; then
+    complete -C "$(which aws_completer)" aws
+fi
+if type -P code &> /dev/null; then
+    export KUBE_EDITOR="$(which code) --wait"
+fi
+export HELM_DIFF_COLOR="true"
+
 # Windows MSYS Git bash tweaks:
 if [[ "${__OS}" = "Msys" ]]; then
     unset PAGER
