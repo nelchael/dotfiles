@@ -16,6 +16,9 @@ umask 0022
 # Interactive?
 [[ "${-}" == *i* ]] || return
 
+# Set a variable with the system name:
+export __OS="$(uname -o)"
+
 # Remove existing aliases:
 unalias -a
 
@@ -32,6 +35,17 @@ alias lla='ls -lash --color=yes'
 alias lss='ls -shS --color=yes'
 alias lls='ls -lshS --color=yes'
 
+if [[ "${__OS}" == "Darwin" ]]; then
+    alias l='gls -sh --color=yes'
+    alias ls='gls -sh --color=yes'
+    alias sl='gls -sh --color=yes'
+    alias la='gls -ash --color=yes'
+    alias ll='gls -lsh --color=yes'
+    alias lla='gls -lash --color=yes'
+    alias lss='gls -shS --color=yes'
+    alias lls='gls -lshS --color=yes'
+fi
+
 # Other aliases:
 alias cp='cp -Rvi'
 alias df='df -hP'
@@ -42,6 +56,10 @@ alias rm='rm -iv'
 alias s='cd ..'
 alias rsync='rsync --progress --human-readable'
 alias diff='diff --color=auto'
+
+if [[ "${__OS}" == "Darwin" ]]; then
+    alias rm='grm -iv'
+fi
 
 # Enable color for grep and set up ripgrep configuration:
 export GREP_COLORS="mt=36:sl=:cx=:fn=35:ln=32:bn=32:se=35"
@@ -148,9 +166,8 @@ if type -P hstr &> /dev/null; then
 fi
 
 # Windows MSYS Git bash tweaks:
-if [[ "${OS}" = "Windows_NT" ]]; then
+if [[ "${__OS}" = "Msys" ]]; then
     unset PAGER
-
     alias gvim='start gvim'
 fi
 
