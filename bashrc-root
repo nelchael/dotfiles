@@ -37,10 +37,10 @@ alias grep='grep --color=auto'
 
 # `ls' colors:
 if type -P dircolors &> /dev/null; then
-	eval "$(dircolors -b)"
-	for ext in conf diff html ini log patch properties toml txt xml xsl; do
-		export LS_COLORS="${LS_COLORS}*.${ext}=00;33:"
-	done
+    eval "$(dircolors -b)"
+    for ext in conf diff html ini log patch properties toml txt xml xsl; do
+        export LS_COLORS="${LS_COLORS}*.${ext}=00;33:"
+    done
 fi
 
 # Enable coredumps:
@@ -68,7 +68,6 @@ export HISTIGNORE='l:ls:sl:ll:lla:lss:lls:s:bg:fg:j:history:hstr --*'
 shopt -s histappend
 shopt -s cmdhist
 
-
 function _bashrc_prompt_prefix() { if [[ "${EUID}" == 0 ]]; then echo -n '\[\e[31m\]\u@\h\[\e[0m\]'; else echo -n '\[\e[33m\]\u@\h\[\e[0m\]'; fi; echo -n ' \[\e[94m\]\w\[\e[0m\]'; }
 function _bashrc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\[\e[35m\]${VIRTUAL_ENV_PROMPT}\[\e[0m\]"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\[\e[31m\]'; else echo -n '\[\e[90m\]'; fi; echo -n '\$\[\e[0m\] '; }
 function _bashrc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
@@ -81,8 +80,8 @@ bind -x '"\C-\M-R": /usr/bin/reset'
 
 # HSTR settings (https://github.com/dvorka/hstr):
 if type -P hstr &> /dev/null; then
-	export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
-	export HSTR_PROMPT='> '
-	bind '"\C-r": "\C-ahstr -- \C-j"'
-	PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
+    export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
+    export HSTR_PROMPT='> '
+    bind '"\C-r": "\C-ahstr -- \C-j"'
+    PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
 fi

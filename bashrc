@@ -53,10 +53,10 @@ export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 # `ls' colors:
 type -P gdircolors && alias dircolors=gdircolors
 if type -t dircolors &> /dev/null; then
-	eval "$(dircolors -b)"
-	for ext in conf diff html ini json log md patch properties toml txt xml xsl yaml yml; do
-		export LS_COLORS="${LS_COLORS}*.${ext}=00;33:"
-	done
+    eval "$(dircolors -b)"
+    for ext in conf diff html ini json log md patch properties toml txt xml xsl yaml yml; do
+        export LS_COLORS="${LS_COLORS}*.${ext}=00;33:"
+    done
 fi
 
 # Enable coredumps:
@@ -67,9 +67,9 @@ ulimit -c hard
 
 # Check ~/bin/bash_completion.d for additional bash-completion scripts:
 [[ -d ~/bin/bash_completion.d ]] && {
-	for i in ~/bin/bash_completion.d/*; do
-		source "${i}"
-	done
+    for i in ~/bin/bash_completion.d/*; do
+        source "${i}"
+    done
 }
 
 # Add ~/.local/bin, ~/.bin to PATH:
@@ -103,57 +103,57 @@ PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; PS1="$(_bashrc_prompt_prefix
 
 # Augument prompt with git information:
 git_prompt_sh_possible_locations=(
-	"/usr/share/git-core/contrib/completion/git-prompt.sh"
-	"/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
-	"/mingw64/share/git/completion/git-prompt.sh"
+    "/usr/share/git-core/contrib/completion/git-prompt.sh"
+    "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+    "/mingw64/share/git/completion/git-prompt.sh"
 )
 for git_prompt_sh_file in ${git_prompt_sh_possible_locations[*]}; do
-	if [[ -e "${git_prompt_sh_file}" ]]; then
-		export GIT_PS1_SHOWDIRTYSTATE=yes
-		export GIT_PS1_SHOWUNTRACKEDFILES=yes
-		export GIT_PS1_SHOWSTASHSTATE=yes
-		export GIT_PS1_DESCRIBE_STYLE=branch
-		export GIT_PS1_SHOWCOLORHINTS=yes
-		export GIT_PS1_SHOWUPSTREAM="auto verbose"
-		source "${git_prompt_sh_file}"
-		PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; __git_ps1 "$(_bashrc_prompt_prefix) " "$(_bashrc_prompt_suffix "${__r}")" "(%s) "'
-		break
-	fi
+    if [[ -e "${git_prompt_sh_file}" ]]; then
+        export GIT_PS1_SHOWDIRTYSTATE=yes
+        export GIT_PS1_SHOWUNTRACKEDFILES=yes
+        export GIT_PS1_SHOWSTASHSTATE=yes
+        export GIT_PS1_DESCRIBE_STYLE=branch
+        export GIT_PS1_SHOWCOLORHINTS=yes
+        export GIT_PS1_SHOWUPSTREAM="auto verbose"
+        source "${git_prompt_sh_file}"
+        PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; __git_ps1 "$(_bashrc_prompt_prefix) " "$(_bashrc_prompt_suffix "${__r}")" "(%s) "'
+        break
+    fi
 done
 
 # Enable use of ccache
 if type -P ccache &> /dev/null; then
-	export CCACHE_DIR=${HOME}/.ccache
-	[[ ! -d "${CCACHE_DIR}" ]] && {
-		mkdir -p "${CCACHE_DIR}"
-		chmod 700 "${CCACHE_DIR}"
-	}
+    export CCACHE_DIR=${HOME}/.ccache
+    [[ ! -d "${CCACHE_DIR}" ]] && {
+        mkdir -p "${CCACHE_DIR}"
+        chmod 700 "${CCACHE_DIR}"
+    }
 fi
 
 # Pretty man:
 function man() {
-	if [[ "${1}" = "-k" || "${1}" = "-K" ]]; then
-		/usr/bin/man "${@}"
-	else
-		vim -R -c "Man $1 $2" -c "set nonu" -c "bdelete 1"
-	fi
+    if [[ "${1}" = "-k" || "${1}" = "-K" ]]; then
+        /usr/bin/man "${@}"
+    else
+        vim -R -c "Man $1 $2" -c "set nonu" -c "bdelete 1"
+    fi
 }
 
 bind -x '"\C-\M-R": /usr/bin/reset'
 
 # HSTR settings (https://github.com/dvorka/hstr):
 if type -P hstr &> /dev/null; then
-	export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
-	export HSTR_PROMPT='> '
-	bind '"\C-r": "\C-ahstr -- \C-j"'
-	PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
+    export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
+    export HSTR_PROMPT='> '
+    bind '"\C-r": "\C-ahstr -- \C-j"'
+    PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
 fi
 
 # Windows MSYS Git bash tweaks:
 if [[ "${OS}" = "Windows_NT" ]]; then
-	unset PAGER
+    unset PAGER
 
-	alias gvim='start gvim'
+    alias gvim='start gvim'
 fi
 
 # Late setup (a.k.a. fix-ups):
