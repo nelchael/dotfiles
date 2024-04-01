@@ -154,6 +154,7 @@ if type -P hstr &> /dev/null; then
 fi
 
 eval "$(starship init bash)"
+eval "$(starship completions bash)"
 
 if type -P aws &> /dev/null; then
     complete -C "$(which aws_completer)" aws
