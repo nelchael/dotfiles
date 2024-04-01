@@ -66,8 +66,8 @@ export HISTIGNORE='l:ls:sl:ll:lla:lss:lls:s:bg:fg:j:history:hstr --*'
 shopt -s histappend
 shopt -s cmdhist
 
-function _bashrc_prompt_prefix() { if [[ "${EUID}" == 0 ]]; then echo -n '\[\e[31m\]\u@\h\[\e[0m\]'; else echo -n '\[\e[33m\]\u@\h\[\e[0m\]'; fi; echo -n ' \[\e[94m\]\w\[\e[0m\]'; }
-function _bashrc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\[\e[35m\]${VIRTUAL_ENV_PROMPT}\[\e[0m\]"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\[\e[31m\]'; else echo -n '\[\e[90m\]'; fi; echo -n '\$\[\e[0m\] '; }
+function _bashrc_prompt_prefix() { echo -n '\[\e[31m\]\u@\h\[\e[0m\] \[\e[94m\]\w\[\e[0m\]'; }
+function _bashrc_prompt_suffix() { if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\[\e[31m\]'; else echo -n '\[\e[90m\]'; fi; echo -n '\$\[\e[0m\] '; }
 function _bashrc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
 
 # Default prompt and terminal title using PROMPT_COMMAND:
