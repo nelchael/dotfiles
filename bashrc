@@ -137,7 +137,7 @@ function man() {
 bind -x '"\C-\M-R": /usr/bin/reset'
 
 function _bashrc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
-export STARSHIP_CONFIG=~/.starship.toml
+export STARSHIP_CONFIG="${HOME}/.starship.toml"
 starship_precmd_user_func=_bashrc_terminal_title
 
 # HSTR settings (https://github.com/dvorka/hstr):
