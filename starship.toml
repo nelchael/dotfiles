@@ -1,0 +1,56 @@
+# Configuration documentation: https://starship.rs/config/
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+format = "$username$hostname$container$directory$git_branch$git_state$git_status$python$character"
+
+[username]
+style_root = "yellow"
+style_user = "yellow"
+format ="[$user@]($style)"
+
+[hostname]
+ssh_only = false
+style ="yellow"
+format = "[$ssh_symbol$hostname]($style) "
+
+[container]
+symbol = "🐳"
+format = "$symbol "
+
+[directory]
+truncation_length = 2
+truncate_to_repo = false
+use_os_path_sep = false
+style ="bright-blue"
+truncation_symbol = "…/"
+repo_root_format = "[$path]($style)"
+
+[git_branch]
+symbol =""
+style = "green"
+format = "[$symbol$branch]($style) "
+
+[git_state]
+style = "yellow"
+
+[git_status]
+style = "blue"
+up_to_date = "[✓](green)"
+modified = "m"
+deleted = "d"
+staged = "+"
+ahead = '⇡[${count}](green)'
+diverged = '⇡[${ahead_count}](green)⇣[${behind_count}](red)'
+behind = '⇣[${count}](red)'
+ignore_submodules = true
+format = "(([$all_status]($style)[|](gray))[$ahead_behind](gray) )"
+
+[python]
+style = "purple"
+format = "[($symbol$virtualenv )]($style)"
+
+[character]
+success_symbol = "[\\$](dimmed white)"
+error_symbol = "[\\$](red)"

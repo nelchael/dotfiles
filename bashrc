@@ -116,34 +116,6 @@ shopt -s cmdhist
 # For xmllint --format:
 export XMLLINT_INDENT="  "
 
-function _bashrc_prompt_prefix() { if [[ "${EUID}" == 0 ]]; then echo -n '\[\e[31m\]\u@\h\[\e[0m\]'; else echo -n '\[\e[33m\]\u@\h\[\e[0m\]'; fi; echo -n ' \[\e[94m\]\w\[\e[0m\]'; }
-function _bashrc_prompt_suffix() { [[ -n "${VIRTUAL_ENV_PROMPT}" ]] && echo -n "\[\e[35m\]${VIRTUAL_ENV_PROMPT}\[\e[0m\]"; if [[ "${1:?Missing exit code parameter}" != "0" ]]; then echo -n '\[\e[31m\]'; else echo -n '\[\e[90m\]'; fi; echo -n '\$\[\e[0m\] '; }
-function _bashrc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
-
-# Default prompt and terminal title using PROMPT_COMMAND:
-PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; PS1="$(_bashrc_prompt_prefix) $(_bashrc_prompt_suffix "${__r}")"'
-
-# Augument prompt with git information:
-git_prompt_sh_possible_locations=(
-    "/usr/share/git-core/contrib/completion/git-prompt.sh"
-    "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
-    "/mingw64/share/git/completion/git-prompt.sh"
-)
-for git_prompt_sh_file in ${git_prompt_sh_possible_locations[*]}; do
-    if [[ -e "${git_prompt_sh_file}" ]]; then
-        export GIT_PS1_SHOWDIRTYSTATE=yes
-        export GIT_PS1_SHOWUNTRACKEDFILES=yes
-        export GIT_PS1_SHOWSTASHSTATE=yes
-        export GIT_PS1_DESCRIBE_STYLE=branch
-        export GIT_PS1_SHOWCOLORHINTS=yes
-        export GIT_PS1_SHOWUPSTREAM="auto verbose"
-        source "${git_prompt_sh_file}"
-        PROMPT_COMMAND='__r="${?}"; _bashrc_terminal_title; __git_ps1 "$(_bashrc_prompt_prefix) " "$(_bashrc_prompt_suffix "${__r}")" "(%s) "'
-        break
-    fi
-done
-
 # Enable use of ccache
 if type -P ccache &> /dev/null; then
     export CCACHE_DIR=${HOME}/.ccache
@@ -164,13 +136,24 @@ function man() {
 
 bind -x '"\C-\M-R": /usr/bin/reset'
 
+function _bashrc_terminal_title() { echo -ne "\033]0;${USER:-${USERNAME:-???}}@${HOSTNAME%%.*}:${PWD/${HOME}/\~}\007"; }
+export STARSHIP_CONFIG=~/.starship.toml
+starship_precmd_user_func=_bashrc_terminal_title
+
 # HSTR settings (https://github.com/dvorka/hstr):
 if type -P hstr &> /dev/null; then
     export HSTR_CONFIG=hicolor,warning,raw-history-view,keywords-matching,case-sensitive,prompt-bottom
     export HSTR_PROMPT='> '
     bind '"\C-r": "\C-ahstr -- \C-j"'
-    PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -n"
+    function _bashrc_hrc_enabled() {
+        _bashrc_terminal_title
+        history -a
+        history -n
+    }
+    starship_precmd_user_func=_bashrc_hrc_enabled
 fi
+
+eval "$(starship init bash)"
 
 if type -P aws &> /dev/null; then
     complete -C "$(which aws_completer)" aws

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPLY_FILES="bashrc gitconfig inputrc ripgreprc vimrc"
+APPLY_FILES="bashrc gitconfig inputrc ripgreprc starship.toml vimrc "
 DEPRECATED_FILES="dir_colors screenrc"
 
 for i in ${APPLY_FILES}; do
