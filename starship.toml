@@ -52,5 +52,5 @@ style = "purple"
 format = "[($symbol$virtualenv )]($style)"
 
 [character]
-success_symbol = "[\\$](dimmed white)"
-error_symbol = "[\\$](red)"
+success_symbol = "[❯](dimmed white)"
+error_symbol = "[❯](red)"
