@@ -2,61 +2,61 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
 format = "$username$hostname$container$directory$git_branch$git_state$git_status$python$package$character"
+add_newline = false
 
 [username]
+format ="[$user@]($style)"
 style_root = "yellow"
 style_user = "yellow"
-format ="[$user@]($style)"
 
 [hostname]
+format = "[$ssh_symbol$hostname]($style) "
 ssh_only = false
 style ="yellow"
-format = "[$ssh_symbol$hostname]($style) "
 
 [container]
-symbol = "🐳"
 format = "$symbol "
+symbol = "🐳"
 
 [directory]
-truncation_length = 2
-truncate_to_repo = false
-use_os_path_sep = false
-style ="bright-blue"
-truncation_symbol = "…/"
 repo_root_format = "[$path]($style)"
+style ="bright-blue"
+truncate_to_repo = false
+truncation_length = 2
+truncation_symbol = "…/"
+use_os_path_sep = false
 
 [git_branch]
-symbol =""
-style = "green"
 format = "[$symbol$branch]($style) "
+style = "green"
+symbol =""
 
 [git_state]
 style = "yellow"
 
 [git_status]
-style = "blue"
-up_to_date = "[✓](green)"
-modified = "m"
-deleted = "d"
-staged = "+"
-ahead = '⇡[${count}](green)'
-diverged = '⇡[${ahead_count}](green)⇣[${behind_count}](red)'
-behind = '⇣[${count}](red)'
-ignore_submodules = true
 format = "(([$all_status]($style)[|](gray))[$ahead_behind](gray) )"
+up_to_date = "[✓](green)"
+ahead = '⇡[${count}](green)'
+behind = '⇣[${count}](red)'
+diverged = '⇡[${ahead_count}](green)⇣[${behind_count}](red)'
+deleted = "d"
+modified = "m"
+staged = "+"
+style = "blue"
+ignore_submodules = true
 
 [python]
-style = "purple"
 format = "[($symbol$virtualenv )]($style)"
+style = "purple"
 
 [package]
+format = "[$symbol$version]($style) "
+display_private = true
 symbol = "📦"
 version_format = "${raw}"
-display_private = true
-format = "[$symbol$version]($style) "
 
 [character]
-success_symbol = "[❯](dimmed white)"
 error_symbol = "[❯](red)"
+success_symbol = "[❯](dimmed white)"
