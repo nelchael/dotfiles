@@ -3,7 +3,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
-format = "$username$hostname$container$directory$git_branch$git_state$git_status$python$character"
+format = "$username$hostname$container$directory$git_branch$git_state$git_status$python$package$character"
 
 [username]
 style_root = "yellow"
@@ -50,6 +50,12 @@ format = "(([$all_status]($style)[|](gray))[$ahead_behind](gray) )"
 [python]
 style = "purple"
 format = "[($symbol$virtualenv )]($style)"
+
+[package]
+symbol = "📦"
+version_format = "${raw}"
+display_private = true
+format = "[$symbol$version]($style) "
 
 [character]
 success_symbol = "[❯](dimmed white)"
