@@ -43,7 +43,7 @@
     ci = commit
     branches = branch --list -v
     outgoing = log --branches --not --remotes=origin --oneline
-    purge-branches = !git branch -vv | awk '/\\[origin\\/.*: gone]/ {if ($4 == \"gone]\") {print $1}}' | xargs -r git branch -v -D
+    purge-branches = !git branch --no-color --no-column --merged "$(git symbolic-ref refs/remotes/origin/HEAD --short | sed 's,origin/,,')" --no-contains origin/HEAD --no-contains "$(git branch --show-current)" | xargs -r git branch -v --delete
     tags = !git tag --list | sort --version-sort
     show-branches = show-branch --current heads/*
 [filter "lfs"]
