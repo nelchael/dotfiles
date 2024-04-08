@@ -41,10 +41,11 @@ up_to_date = "[✓](green)"
 ahead = '⇡[${count}](green)'
 behind = '⇣[${count}](red)'
 diverged = '⇡[${ahead_count}](green)⇣[${behind_count}](red)'
-deleted = "d"
-modified = "m"
+deleted = "D"
+modified = "M"
+renamed = "R"
 staged = "+"
-style = "blue"
+style = "bright-blue"
 ignore_submodules = true
 
 [python]
