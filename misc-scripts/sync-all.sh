@@ -74,12 +74,11 @@ for directory in *; do
     if [[ "${option_offline}" != "yes" && -n "$(git ${GIT_OPTIONS} -C "${directory}" remote show)" ]]; then
         (git ${GIT_OPTIONS} -C "${directory}" pull --rebase || git ${GIT_OPTIONS} -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Already up to date./d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
 
-        echo -ne "\e[31m"
-        git ${GIT_OPTIONS} -C "${directory}" branches | grep '\[gone\]'
-        echo -ne "\e[0m"
 
         [[ "${option_purge_branches}" = "yes" ]] && {
+            echo -ne "\e[31m"
             git ${GIT_OPTIONS} -C "${directory}" purge-branches
+            echo -ne "\e[0m"
         }
 
         if [[ "${option_run_gc_purge_all}" != "yes" ]]; then
