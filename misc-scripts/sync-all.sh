@@ -83,12 +83,16 @@ for directory in *; do
 
         if [[ "${option_run_gc_purge_all}" != "yes" ]]; then
             git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet
-            git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet'
+            if [[ -f "${directory}/.gitmodules" ]]; then
+                git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet'
+            fi
         fi
     fi
 
     if [[ "${option_run_gc_purge_all}" = "yes" ]]; then
         git ${GIT_OPTIONS} -C "${directory}" gc --prune=all --quiet
-        git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet'
+        if [[ -f "${directory}/.gitmodules" ]]; then
+            git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet'
+        fi
     fi
 done
