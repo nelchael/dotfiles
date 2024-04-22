@@ -45,6 +45,10 @@ for directory in *; do
         continue;
     }
 
+    [[ -f "${directory}/.git/sync-all-skip" ]] && {
+        continue;
+    }
+
     if [[ "${option_hide_branches}" != "yes" ]]; then
         branch_info="$(git ${GIT_OPTIONS} -C "${directory}" branch --show-current)"
         if [[ "${branch_info}" = "main" ]]; then
