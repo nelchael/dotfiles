@@ -5,6 +5,8 @@
     name = Krzysztof Pawlik
 [core]
     abbrev = 8
+[commit]
+    gpgSign = true
 [push]
     default = simple
 [pull]
@@ -20,6 +22,8 @@
 [rebase]
     stat = true
     autoStash = true
+[rerere]
+    enabled = true
 [status]
     short = false
     branch = true
@@ -37,6 +41,8 @@
     showPatch = true
 [init]
     defaultBranch = main
+[gpg]
+    format = ssh
 [alias]
     st = status --short
     co = checkout
