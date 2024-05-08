@@ -38,7 +38,7 @@ SED="$(which sed)"
     exit 1
 }
 
-GIT_OPTIONS="-c core.useBuiltinFSMonitor=false"
+GIT_OPTIONS="-c core.useBuiltinFSMonitor=false -c core.fsmonitor=false"
 
 for directory in *; do
     [[ -d "${directory}/.git" ]] || {
