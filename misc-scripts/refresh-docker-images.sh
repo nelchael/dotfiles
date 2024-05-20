@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for img in $(docker image ls --format=json | jq -r '.Repository + ":" + .Tag' | tr -d '\r'); do
+for img in $(docker image ls --format=json | jq -r '.Repository + ":" + .Tag' | tr -d '\r' | sort --version-sort); do
     [[ "${img}" = *":<none>" ]] && continue
     repo_digest="$(docker image inspect "${img}" | jq -r '.[].RepoDigests[0]')"
     if [[ "${repo_digest}" != "null" ]]; then
