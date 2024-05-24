@@ -2,62 +2,62 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "$username$hostname$container$directory$git_branch$git_state$git_status$python$package$character"
+format = '$username$hostname$container$directory$git_branch$git_state$git_status$python$package$character'
 add_newline = false
 
 [username]
-format ="[$user@]($style)"
-style_root = "yellow"
-style_user = "yellow"
+format = '[$user@]($style)'
+style_root = 'yellow'
+style_user = 'yellow'
 
 [hostname]
-format = "[$ssh_symbol$hostname]($style) "
+format = '[$ssh_symbol$hostname]($style) '
 ssh_only = false
-style ="yellow"
+style = 'yellow'
 
 [container]
-format = "$symbol "
-symbol = "🐳"
+format = '$symbol '
+symbol = '🐳'
 
 [directory]
-repo_root_format = "[$path]($style)"
-style ="bright-blue"
+repo_root_format = '[$path]($style)'
+style = 'bright-blue'
 truncate_to_repo = false
 truncation_length = 2
-truncation_symbol = "…/"
+truncation_symbol = '…/'
 use_os_path_sep = false
 
 [git_branch]
-format = "[$symbol$branch]($style) "
-style = "green"
-symbol =""
+format = '[$symbol$branch]($style) '
+style = 'green'
+symbol = ''
 
 [git_state]
-style = "yellow"
+style = 'yellow'
 
 [git_status]
-format = "(([$all_status]($style)[|](gray))[$ahead_behind](gray) )"
-up_to_date = "[✓](green)"
+format = '(([$all_status]($style)[|](gray))[$ahead_behind](gray) )'
+up_to_date = '[✓](green)'
 ahead = '⇡[${count}](green)'
 behind = '⇣[${count}](red)'
 diverged = '⇡[${ahead_count}](green)⇣[${behind_count}](red)'
-deleted = "D"
-modified = "M"
-renamed = "R"
-staged = "+"
-style = "bright-blue"
+deleted = 'D'
+modified = 'M'
+renamed = 'R'
+staged = '+'
+style = 'bright-blue'
 ignore_submodules = true
 
 [python]
-format = "[($symbol$virtualenv )]($style)"
-style = "purple"
+format = '[($symbol$virtualenv )]($style)'
+style = 'purple'
 
 [package]
-format = "[$symbol$version]($style) "
+format = '[$symbol$version]($style) '
 display_private = true
-symbol = "📦"
-version_format = "${raw}"
+symbol = '📦'
+version_format = '${raw}'
 
 [character]
-error_symbol = "[❯](red)"
-success_symbol = "[❯](dimmed white)"
+error_symbol = '[❯](red)'
+success_symbol = '[❯](dimmed white)'
