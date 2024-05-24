@@ -2,7 +2,7 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = '$username$hostname$container$directory$git_branch$git_state$git_status$python$package$character'
+format = '$username$hostname$container$directory$kubernetes$git_branch$git_state$git_status$python$package$character'
 add_newline = false
 
 [username]
@@ -26,6 +26,20 @@ truncate_to_repo = false
 truncation_length = 2
 truncation_symbol = '…/'
 use_os_path_sep = false
+
+[kubernetes]
+detect_env_vars = ['KUBECONFIG']
+detect_extensions = ['jsonnet', 'libsonnet']
+detect_folders = ['charts', 'k8s']
+detect_files = ['helmfile.yaml', 'helmfile-dev.yaml', 'helmfile-stage.yaml', 'helmfile-prod.yaml', 'helmfile-shared.yaml', 'Chart.yaml']
+disabled = false
+format = '[$symbol$context(/$namespace)]($style) '
+style = 'dimmed white'
+symbol = '⚙️'
+contexts = [
+    { context_pattern = '^(dev|stage).*', style = 'dimmed green' },
+    { context_pattern = '^prod.*', style = 'red' },
+]
 
 [git_branch]
 format = '[$symbol$branch]($style) '
