@@ -33,11 +33,11 @@ detect_extensions = ['jsonnet', 'libsonnet']
 detect_folders = ['charts', 'k8s']
 detect_files = ['helmfile.yaml', 'helmfile-dev.yaml', 'helmfile-stage.yaml', 'helmfile-prod.yaml', 'helmfile-shared.yaml', 'Chart.yaml']
 disabled = false
-format = '[$symbol$context(/$namespace)]($style) '
+format = '[k8s:](dimmed white)[$context(/$namespace)]($style) '
 style = 'dimmed white'
-symbol = '⚙️'
 contexts = [
-    { context_pattern = '^(dev|stage).*', style = 'dimmed green' },
+    { context_pattern = '^dev.*', style = 'dimmed white' },
+    { context_pattern = '^stage.*', style = 'yellow' },
     { context_pattern = '^prod.*', style = 'red' },
 ]
 
