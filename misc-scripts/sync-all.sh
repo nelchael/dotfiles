@@ -55,9 +55,6 @@ for directory in *; do
             branch_info=""  # On default "main" branch
         elif [[ "${branch_info}" = "master" ]]; then
             branch_info=" \e[91m${branch_info}\e[0m"
-            git ${GIT_OPTIONS} -C "${directory}" show-branch origin/main &> /dev/null && {
-                branch_info="${branch_info} \e[93m(origin/main available)\e[0m"
-            }
         elif [[ "${branch_info}" = "$(git ${GIT_OPTIONS} -C "${directory}" branch --remotes --list '*/HEAD' | awk -F / '{print $NF}')" ]]; then
             branch_info=""  # On default branch
         else
