@@ -10,3 +10,5 @@ for img in $(docker image ls --format=json | jq -r '.Repository + ":" + .Tag' | 
         echo -e " \e[91m>>>\e[0m Skipping \e[94m${img}\e[0m - no repository digest"
     fi
 done
+
+docker image prune -f
