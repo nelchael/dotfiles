@@ -2,7 +2,7 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = '$username$hostname$container$directory$kubernetes$git_branch$git_state$git_status$python$package$character'
+format = '$username$hostname$container$directory$kubernetes$git_branch$git_state$git_status$python$package$jobs$character'
 add_newline = false
 
 [username]
@@ -71,6 +71,10 @@ format = '[$symbol$version]($style) '
 display_private = true
 symbol = '📦'
 version_format = '${raw}'
+
+[jobs]
+style = 'blue'
+symbol = '&'
 
 [character]
 error_symbol = '[❯](red)'
