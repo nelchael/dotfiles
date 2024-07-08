@@ -1,0 +1,5 @@
+no-mouse: true
+show-item-count: true
+
+ignore-dir-patterns:
+  - .+[\\/]CloudStorage[\\/].+
