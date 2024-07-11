@@ -12,3 +12,4 @@ for img in $(docker image ls --format=json | jq -r '.Repository + ":" + .Tag' | 
 done
 
 docker image prune -f
+docker system df
