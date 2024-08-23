@@ -30,7 +30,7 @@ use_os_path_sep = false
 [kubernetes]
 detect_env_vars = ['KUBECONFIG']
 detect_extensions = ['jsonnet', 'libsonnet']
-detect_folders = ['charts', 'k8s']
+detect_folders = ['charts', 'helm-charts', 'k8s']
 detect_files = ['helmfile.yaml', 'helmfile-dev.yaml', 'helmfile-stage.yaml', 'helmfile-prod.yaml', 'helmfile-shared.yaml', 'Chart.yaml']
 disabled = false
 format = '[k8s:](dimmed white)[$context(/$namespace)]($style) '
