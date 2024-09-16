@@ -40,6 +40,7 @@ SED="$(which sed)"
 
 GIT_OPTIONS="-c core.useBuiltinFSMonitor=false -c core.fsmonitor=false"
 
+declare -a spawned_background_procs=()
 for directory in *; do
     [[ -d "${directory}/.git" ]] || {
         continue;
@@ -83,17 +84,35 @@ for directory in *; do
         }
 
         if [[ "${option_run_gc_purge_all}" != "yes" ]]; then
-            git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet
+            git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet &
+            spawned_background_procs+=(${!})
             if [[ -f "${directory}/.gitmodules" ]]; then
-                git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet'
+                git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet' &
+                spawned_background_procs+=(${!})
             fi
         fi
     fi
 
     if [[ "${option_run_gc_purge_all}" = "yes" ]]; then
-        git ${GIT_OPTIONS} -C "${directory}" gc --prune=all --quiet
+        git ${GIT_OPTIONS} -C "${directory}" gc --prune=all --quiet &
+        spawned_background_procs+=(${!})
         if [[ -f "${directory}/.gitmodules" ]]; then
-            git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet'
+            git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet' &
+            spawned_background_procs+=(${!})
         fi
     fi
 done
+
+while [[ "${#spawned_background_procs[@]}" -gt 0 ]]; do
+    echo -ne "\r \e[1;93m❯\e[0m \e[2mWaiting for background GCs -- ${#spawned_background_procs[@]} remaining…\e[0m\e[K"
+    wait -n -p completed_pid "${spawned_background_procs[@]}"
+    for index in "${!spawned_background_procs[@]}"; do
+        if [[ "${spawned_background_procs[${index}]}" == "${completed_pid}" ]]; then
+            unset spawned_background_procs[${index}]
+            break
+        fi
+        echo "BUG! PID \"${completed_pid}\" not found in the list of spawned procs!"
+        exit 1
+    done
+done
+echo -ne "\r\e[K\r"
