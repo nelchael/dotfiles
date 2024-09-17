@@ -111,8 +111,6 @@ while [[ "${#spawned_background_procs[@]}" -gt 0 ]]; do
             unset spawned_background_procs[${index}]
             break
         fi
-        echo "BUG! PID \"${completed_pid}\" not found in the list of spawned procs!"
-        exit 1
     done
 done
 echo -ne "\r\e[K\r"
