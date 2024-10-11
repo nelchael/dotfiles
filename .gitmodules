@@ -1,0 +1,39 @@
+[submodule "vim-packages/start/vim-toml"]
+	path = vim-packages/start/vim-toml
+	url = https://github.com/cespare/vim-toml
+[submodule "vim-packages/start/inkpot"]
+	path = vim-packages/start/inkpot
+	url = https://github.com/ciaranm/inkpot
+[submodule "vim-packages/start/securemodelines"]
+	path = vim-packages/start/securemodelines
+	url = https://github.com/ciaranm/securemodelines
+[submodule "vim-packages/start/vim-lastplace"]
+	path = vim-packages/start/vim-lastplace
+	url = https://github.com/farmergreg/vim-lastplace
+[submodule "vim-packages/start/vim-terraform"]
+	path = vim-packages/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform
+[submodule "vim-packages/start/lightline.vim"]
+	path = vim-packages/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim-packages/start/vim-gitbranch"]
+	path = vim-packages/start/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch
+[submodule "vim-packages/start/vim-jinja"]
+	path = vim-packages/start/vim-jinja
+	url = https://github.com/lepture/vim-jinja
+[submodule "vim-packages/start/vim-highlightedyank"]
+	path = vim-packages/start/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank
+[submodule "vim-packages/start/rainbow_csv"]
+	path = vim-packages/start/rainbow_csv
+	url = https://github.com/mechatroner/rainbow_csv
+[submodule "vim-packages/start/vim-mustache-handlebars"]
+	path = vim-packages/start/vim-mustache-handlebars
+	url = https://github.com/mustache/vim-mustache-handlebars
+[submodule "vim-packages/start/keyboard_cat.vim"]
+	path = vim-packages/start/keyboard_cat.vim
+	url = https://github.com/natw/keyboard_cat.vim
+[submodule "vim-packages/start/vim-syntax-codeowners"]
+	path = vim-packages/start/vim-syntax-codeowners
+	url = https://github.com/rhysd/vim-syntax-codeowners
