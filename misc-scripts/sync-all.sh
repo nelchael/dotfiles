@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-options="$(getopt -o opbf -- "${@}")"
+options="$(getopt -o opbfv -- "${@}")"
 if [[ "${?}" -ne 0 ]]; then
     exit 1
 fi
@@ -18,6 +18,9 @@ while :; do
             ;;
         -p)
             declare -r option_purge_branches=yes
+            ;;
+        -v)
+            declare -r option_verbose=yes
             ;;
         --)
             shift
@@ -43,10 +46,12 @@ GIT_OPTIONS="-c core.useBuiltinFSMonitor=false -c core.fsmonitor=false"
 declare -a spawned_background_procs=()
 for directory in *; do
     [[ -d "${directory}/.git" ]] || {
+        [[ "${option_verbose}" == "yes" ]] && echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m \e[2;31mno .git directory\e[0m"
         continue;
     }
 
     [[ -f "${directory}/.git/sync-all-skip" ]] && {
+        [[ "${option_verbose}" == "yes" ]] && echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m \e[2;31mskipped\e[0m"
         continue;
     }
 
