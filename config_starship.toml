@@ -14,6 +14,7 @@ style_user = 'yellow'
 format = '[$ssh_symbol$hostname]($style) '
 ssh_only = false
 style = 'yellow'
+aliases = { "MOTHERSHIP" = "mothership", "INTERCEPTOR" = "interceptor" }
 
 [container]
 format = '$symbol '
@@ -28,17 +29,24 @@ truncation_symbol = '…/'
 use_os_path_sep = false
 
 [kubernetes]
+format = '[k8s:](dimmed white)[$context(/$namespace)]($style) '
 detect_env_vars = ['KUBECONFIG']
 detect_extensions = ['jsonnet', 'libsonnet']
 detect_folders = ['charts', 'helm-charts', 'k8s']
-detect_files = ['helmfile.yaml', 'helmfile-dev.yaml', 'helmfile-stage.yaml', 'helmfile-prod.yaml', 'helmfile-shared.yaml', 'Chart.yaml']
+detect_files = [
+  'helmfile.yaml',
+  'helmfile-dev.yaml',
+  'helmfile-stage.yaml',
+  'helmfile-prod.yaml',
+  'helmfile-shared.yaml',
+  'Chart.yaml',
+]
 disabled = false
-format = '[k8s:](dimmed white)[$context(/$namespace)]($style) '
 style = 'dimmed white'
 contexts = [
-    { context_pattern = '^dev.*', style = 'dimmed white' },
-    { context_pattern = '^stage.*', style = 'yellow' },
-    { context_pattern = '^prod.*', style = 'red' },
+  { context_pattern = '^dev.*', style = 'dimmed white' },
+  { context_pattern = '^stage.*', style = 'yellow' },
+  { context_pattern = '^prod.*', style = 'red' },
 ]
 
 [git_branch]
