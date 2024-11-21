@@ -7,6 +7,9 @@
     abbrev = 8
 [commit]
     gpgSign = true
+[checkout]
+    workers = 0
+    thresholdForParallelism = 100
 [push]
     default = simple
 [pull]
@@ -29,6 +32,7 @@
     branch = true
     showUntrackedFiles = normal
 [fetch]
+    parallel = 0
     prune = true
     recurseSubmodules = on-demand
 [submodule]
