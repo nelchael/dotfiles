@@ -37,8 +37,6 @@
     autoPackLimit = 32
 [gpg]
     format = ssh
-[include]
-    path = ~/.gitconfig-site
 [init]
     defaultBranch = main
 [log]
@@ -63,3 +61,5 @@
 [user]
     email = krzysiek.pawlik@people.pl
     name = Krzysztof Pawlik
+[include]
+    path = ~/.gitconfig-site
