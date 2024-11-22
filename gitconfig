@@ -1,52 +1,5 @@
 ; vim: set ft=gitconfig
 
-[user]
-    email = krzysiek.pawlik@people.pl
-    name = Krzysztof Pawlik
-[core]
-    abbrev = 8
-[commit]
-    gpgSign = true
-[checkout]
-    workers = 0
-    thresholdForParallelism = 100
-[push]
-    default = simple
-[pull]
-    rebase = true
-[color]
-    diff = auto
-    status = auto
-[diff]
-    mnemonicprefix = yes
-    renames = true
-[log]
-    decorate = auto
-[rebase]
-    stat = true
-    autoStash = true
-[rerere]
-    enabled = true
-[status]
-    short = false
-    branch = true
-    showUntrackedFiles = normal
-[fetch]
-    parallel = 0
-    prune = true
-    recurseSubmodules = on-demand
-[submodule]
-    recurse = true
-[gc]
-    auto = 1536
-    autoPackLimit = 32
-    autoDetach = false
-[stash]
-    showPatch = true
-[init]
-    defaultBranch = main
-[gpg]
-    format = ssh
 [alias]
     st = status --short
     co = checkout
@@ -56,10 +9,57 @@
     purge-branches = "!(git branch --format '%(refname:short)' --merged \"$(git symbolic-ref refs/remotes/origin/HEAD --short | cut -d/ -f2)\" --no-contains origin/HEAD --no-contains \"$(git branch --show-current)\"; git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}') | sort -u | rg -v '^(main|default|master)$' | xargs -r git branch -v --force --delete"
     tags = !git tag --list | sort --version-sort
     show-branches = show-branch --current heads/*
+[checkout]
+    workers = 0
+    thresholdForParallelism = 100
+[color]
+    diff = auto
+    status = auto
+[commit]
+    gpgSign = true
+[core]
+    abbrev = 8
+[diff]
+    mnemonicprefix = yes
+    renames = copies
+[fetch]
+    parallel = 0
+    prune = true
+    recurseSubmodules = on-demand
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+[gc]
+    auto = 1536
+    autoPackLimit = 32
+    autoDetach = false
+[gpg]
+    format = ssh
 [include]
     path = ~/.gitconfig-site
+[init]
+    defaultBranch = main
+[log]
+    decorate = auto
+[pull]
+    rebase = true
+[push]
+    default = simple
+[rebase]
+    stat = true
+    autoStash = true
+[rerere]
+    enabled = true
+[stash]
+    showPatch = true
+[status]
+    short = false
+    branch = true
+    showUntrackedFiles = normal
+[submodule]
+    recurse = true
+[user]
+    email = krzysiek.pawlik@people.pl
+    name = Krzysztof Pawlik
