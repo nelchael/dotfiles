@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-options="$(getopt -o opbfv -- "${@}")"
+options="$(getopt -o ogbpv -- "${@}")"
 if [[ "${?}" -ne 0 ]]; then
     exit 1
 fi
@@ -10,8 +10,8 @@ while :; do
         -o)
             declare -r option_offline=yes
             ;;
-        -f)
-            declare -r option_run_gc_purge_all=yes
+        -g)
+            declare -r option_run_gc_prune_all=yes
             ;;
         -b)
             declare -r option_hide_branches=yes
@@ -87,24 +87,15 @@ for directory in *; do
             git ${GIT_OPTIONS} -C "${directory}" purge-branches
             echo -ne "\e[0m"
         }
-
-        if [[ "${option_run_gc_purge_all}" != "yes" ]]; then
-            git ${GIT_OPTIONS} -C "${directory}" gc --auto --quiet &
-            spawned_background_procs+=(${!})
-            if [[ -f "${directory}/.gitmodules" ]]; then
-                git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --auto --quiet' &
-                spawned_background_procs+=(${!})
-            fi
-        fi
     fi
 
-    if [[ "${option_run_gc_purge_all}" = "yes" ]]; then
-        git ${GIT_OPTIONS} -C "${directory}" gc --prune=all --quiet &
+    gc_opt="auto"
+    [[ "${option_run_gc_prune_all}" = "yes" ]] && gc_opt="prune=all"
+    git ${GIT_OPTIONS} -C "${directory}" gc --${gc_opt} --quiet &
+    spawned_background_procs+=(${!})
+    if [[ -f "${directory}/.gitmodules" ]]; then
+        git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach "git ${GIT_OPTIONS} gc --${gc_opt} --quiet" &
         spawned_background_procs+=(${!})
-        if [[ -f "${directory}/.gitmodules" ]]; then
-            git ${GIT_OPTIONS} -C "${directory}" submodule --quiet foreach 'git ${GIT_OPTIONS} gc --prune=all --quiet' &
-            spawned_background_procs+=(${!})
-        fi
     fi
 done
 
