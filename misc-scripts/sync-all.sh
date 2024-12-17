@@ -79,7 +79,7 @@ for directory in *; do
     echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m${branch_info} ${repo_status}\e[2m$(git ${GIT_OPTIONS} -C "${directory}" remote get-url origin 2> /dev/null || echo 'no remote origin')\e[0m"
 
     if [[ "${option_offline}" != "yes" && -n "$(git ${GIT_OPTIONS} -C "${directory}" remote show)" ]]; then
-        (git ${GIT_OPTIONS} -C "${directory}" pull --rebase || git ${GIT_OPTIONS} -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Already up to date./d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
+        (git ${GIT_OPTIONS} -C "${directory}" pull --rebase --no-stat || git ${GIT_OPTIONS} -C "${directory}" status) 2>&1 | "${SED}" -re "/^Current branch .+ is up to date/d; /^Already up to date./d; /^Fetching submodule/d; ${SYNC_ALL_EXTRA_SED};"
 
 
         [[ "${option_purge_branches}" = "yes" ]] && {
