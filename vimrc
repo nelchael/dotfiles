@@ -201,11 +201,6 @@ function! LightlineCF_Branch()
     return branch_name == 'master' || branch_name == '' ? '' : '' . branch_name
 endfunction
 
-" Check for nicer zip output:
-if filereadable(expand("~/bin/list-unzip"))
-    let g:zip_unzipcmd = expand("~/bin/list-unzip")
-endif
-
 " Templates:
 if filereadable(expand("~/.vim/templates/python.py"))
     au BufNewFile *.py 0r ~/.vim/templates/python.py
