@@ -123,6 +123,9 @@ au FileType diff setlocal nofoldenable
 au FileType spec setlocal textwidth=80
 au FileType tex,plaintex setlocal textwidth=100
 
+" Handle more files as zips:
+au BufReadCmd *.jar,*.whl call zip#Browse(expand("<amatch>"))
+
 " Remap some keys for man & help:
 au FileType help nmap <buffer> <BS> <C-T>
 au FileType help nmap <buffer> <Return> <C-]>
