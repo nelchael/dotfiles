@@ -45,6 +45,7 @@ GIT_OPTIONS="-c core.useBuiltinFSMonitor=false -c core.fsmonitor=false"
 
 declare -a spawned_background_procs=()
 for directory in *; do
+    [[ -f "${directory}" ]] && continue
     [[ -d "${directory}/.git" ]] || {
         [[ "${option_verbose}" == "yes" ]] && echo -e " \e[1;93m❯\e[0m \e[1m${directory}\e[0m \e[2;31mno .git directory\e[0m"
         continue;
