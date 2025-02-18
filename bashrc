@@ -161,6 +161,7 @@ fi
 if type -P code &> /dev/null; then
     export KUBE_EDITOR="$(which code) --wait"
 fi
+export KUBECTL_EXTERNAL_DIFF="diff -Nu --color=auto"
 export HELM_DIFF_COLOR="true"
 
 # Windows MSYS Git bash tweaks:
