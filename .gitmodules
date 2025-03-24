@@ -40,3 +40,6 @@
 [submodule "vim-packages/start/vim-fugitive"]
 	path = vim-packages/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim-packages/start/vim-jsonnet"]
+	path = vim-packages/start/vim-jsonnet
+	url = https://github.com/google/vim-jsonnet.git
