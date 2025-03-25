@@ -12,7 +12,7 @@ style_root = 'yellow'
 style_user = 'yellow'
 
 [hostname]
-format = '[$ssh_symbol$hostname]($style) '
+format = '[$hostname]($style) '
 ssh_only = false
 style = 'yellow'
 aliases = { "MOTHERSHIP" = "mothership", "INTERCEPTOR" = "interceptor" }
