@@ -4,6 +4,7 @@
 
 format = '$username$hostname$container$directory$kubernetes$git_branch$git_state$git_status$python$package$jobs$character'
 add_newline = false
+command_timeout = 1000
 
 [username]
 format = '[$user@]($style)'
